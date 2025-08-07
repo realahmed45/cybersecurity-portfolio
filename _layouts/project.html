@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<article class="project-detail">
+  <div class="container">
+    <header class="project-header">
+      {% if page.read_time %}
+      <div class="project-meta">
+        <span class="read-time">
+          <i class="fas fa-clock"></i>
+          {{ page.read_time }}
+        </span>
+      </div>
+      {% endif %}
+
+      <h1 class="project-title">{{ page.title }}</h1>
+
+      {% if page.description %}
+      <p class="project-description">{{ page.description }}</p>
+      {% endif %} {% if page.tags %}
+      <div class="project-tags">
+        {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="project-actions">
+        {% if page.demo %}
+        <a href="{{ page.demo }}" class="btn btn-primary" target="_blank">
+          <i class="fas fa-external-link-alt"></i>
+          <span>Live Demo</span>
+        </a>
+        {% endif %} {% if page.github %}
+        <a href="{{ page.github }}" class="btn btn-secondary" target="_blank">
+          <i class="fab fa-github"></i>
+          <span>View Code</span>
+        </a>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="project-content">{{ content }}</div>
+
+    <nav class="project-navigation">
+      <div class="nav-links">
+        <a href="{{ '/projects/' | relative_url }}" class="nav-link all">
+          <i class="fas fa-arrow-left"></i>
+          <span>Back to Projects</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</article>

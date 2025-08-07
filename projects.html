@@ -1,0 +1,596 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<section class="projects-hero">
+  <div class="container">
+    <h1>My Projects</h1>
+    <p>
+      A collection of data science and machine learning projects showcasing my
+      skills and expertise.
+    </p>
+  </div>
+</section>
+
+<section class="projects-listing">
+  <div class="container">
+    <div class="projects-grid">
+      {% for project in site.projects reversed %}
+      <article class="project-card">
+        <div class="project-image">
+          {% if project.image %}
+          <!-- Use custom project image if specified -->
+          <img
+            src="{{ project.image }}"
+            alt="{{ project.title }}"
+            class="project-img"
+          />
+          {% else %}
+          <!-- Use default images based on project content or random selection -->
+          {% assign project_images =
+          'https://repository-images.githubusercontent.com/370256849/14a7b800-c245-11eb-9133-36a63798c2a5,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHxf0hNZdq9SjrVp2gzoPi-64k0KX0pqlnyw&s,https://miro.medium.com/v2/resize:fit:1400/1*cG6U1qstYDijh9bPL42e-Q.jpeg,https://miro.medium.com/v2/resize:fit:1200/1*5V3Kzb8DyFlKxp8p5wMnWQ.jpeg,https://www.simplilearn.com/ice9/free_resources_article_thumb/Computer_Vision_Applications.jpg,https://d33wubrfki0l68.cloudfront.net/738/w:1280,e:webp,c:limit/deep-learning-4762872_1280.jpg'
+          | split: ',' %} {% if project.tags contains 'Deep Learning' or
+          project.tags contains 'CNN' %}
+          <img
+            src="{{ project_images[0] }}"
+            alt="{{ project.title }}"
+            class="project-img"
+            onerror="this.src='{{ project_images[1] }}'"
+          />
+          {% elsif project.tags contains 'Computer Vision' %}
+          <img
+            src="{{ project_images[4] }}"
+            alt="{{ project.title }}"
+            class="project-img"
+            onerror="this.src='{{ project_images[0] }}'"
+          />
+          {% elsif project.tags contains 'Machine Learning' or project.tags
+          contains 'Data Science' %}
+          <img
+            src="{{ project_images[2] }}"
+            alt="{{ project.title }}"
+            class="project-img"
+            onerror="this.src='{{ project_images[3] }}'"
+          />
+          {% else %} {% assign random_index = forloop.index | modulo:
+          project_images.size %}
+          <img
+            src="{{ project_images[random_index] }}"
+            alt="{{ project.title }}"
+            class="project-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+          />
+          {% endif %}
+
+          <!-- Fallback animated placeholder -->
+          <div class="placeholder-content" style="display: none">
+            <div class="placeholder-icon">
+              <i
+                class="fas fa-{% if project.tags contains 'Deep Learning' %}brain{% elsif project.tags contains 'Machine Learning' %}robot{% elsif project.tags contains 'Computer Vision' %}eye{% elsif project.tags contains 'Data Science' %}chart-bar{% else %}laptop-code{% endif %}"
+              ></i>
+            </div>
+            <div class="placeholder-circles">
+              {% assign tech_icons = "database,chart-line,code,server,cloud,cog"
+              | split: "," %} {% for i in (1..6) %}
+              <div class="circle circle-{{ i }}">
+                <i class="fas fa-{{ tech_icons[forloop.index0] }}"></i>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="placeholder-title">
+              {{ project.title | truncate: 25 }}
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- Project overlay with quick info -->
+          <div class="project-overlay">
+            <div class="overlay-content">
+              {% if project.tags %}
+              <div class="overlay-tags">
+                {% for tag in project.tags limit: 3 %}
+                <span class="overlay-tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+              <div class="overlay-actions">
+                {% if project.demo %}
+                <a
+                  href="{{ project.demo }}"
+                  class="overlay-btn demo"
+                  target="_blank"
+                  title="Live Demo"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                {% endif %} {% if project.github %}
+                <a
+                  href="{{ project.github }}"
+                  class="overlay-btn github"
+                  target="_blank"
+                  title="View Code"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            {% if project.read_time %}
+            <span class="read-time">
+              <i class="fas fa-clock"></i>
+              {{ project.read_time }}
+            </span>
+            {% endif %} {% if project.date %}
+            <span class="project-date">
+              <i class="fas fa-calendar"></i>
+              {{ project.date | date: "%B %Y" }}
+            </span>
+            {% endif %}
+          </div>
+
+          <h3 class="project-title">
+            <a href="{{ project.url }}">{{ project.title }}</a>
+          </h3>
+
+          {% if project.description %}
+          <p class="project-description">{{ project.description }}</p>
+          {% endif %} {% if project.tags %}
+          <div class="project-tags">
+            {% for tag in project.tags limit: 5 %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="project-links">
+            <a href="{{ project.url }}" class="project-link read">
+              <i class="fas fa-book-open"></i>
+              <span>Read More</span>
+            </a>
+
+            {% if project.demo %}
+            <a
+              href="{{ project.demo }}"
+              class="project-link demo"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt"></i>
+              <span>Demo</span>
+            </a>
+            {% endif %} {% if project.github %}
+            <a
+              href="{{ project.github }}"
+              class="project-link github"
+              target="_blank"
+            >
+              <i class="fab fa-github"></i>
+              <span>Code</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if site.projects.size == 0 %}
+    <div class="no-projects">
+      <i class="fas fa-folder-open"></i>
+      <h3>No Projects Yet</h3>
+      <p>
+        Projects will appear here once they are added to the _projects folder.
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .projects-hero {
+    padding: 5rem 0 3rem;
+    text-align: center;
+    background: linear-gradient(
+      135deg,
+      var(--bg-primary, #fff) 0%,
+      var(--bg-secondary, #f9fafb) 100%
+    );
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: var(--text-secondary, #6b7280);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .projects-listing {
+    padding: 3rem 0 5rem;
+
+    .projects-grid {
+      display: grid;
+      gap: 2rem;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  .project-card {
+    background: var(--bg-primary, #fff);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+
+      .project-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover .project-img {
+        transform: scale(1.05);
+      }
+
+      /* Enhanced placeholder styles */
+      .placeholder-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start, #667eea),
+          var(--gradient-end, #764ba2)
+        );
+        overflow: hidden;
+      }
+
+      .placeholder-icon {
+        position: absolute;
+        z-index: 3;
+      }
+
+      .placeholder-icon i {
+        font-size: 3rem;
+        color: white;
+        opacity: 0.9;
+      }
+
+      .placeholder-circles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .circle {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: float 3s ease-in-out infinite;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .circle i {
+        color: white;
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      .circle.circle-1 {
+        top: 15%;
+        right: 15%;
+        animation-delay: 0s;
+      }
+      .circle.circle-2 {
+        top: 20%;
+        left: 20%;
+        animation-delay: 0.5s;
+      }
+      .circle.circle-3 {
+        bottom: 15%;
+        right: 25%;
+        animation-delay: 1s;
+      }
+      .circle.circle-4 {
+        bottom: 25%;
+        left: 15%;
+        animation-delay: 1.5s;
+      }
+      .circle.circle-5 {
+        top: 50%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+      .circle.circle-6 {
+        bottom: 45%;
+        left: 60%;
+        animation-delay: 2.5s;
+      }
+
+      .placeholder-title {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-align: center;
+        opacity: 0.9;
+        padding: 0 10px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) scale(1);
+        }
+        50% {
+          transform: translateY(-10px) scale(1.05);
+        }
+      }
+
+      /* Project overlay */
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.1) 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover .project-overlay {
+        opacity: 1;
+      }
+
+      .overlay-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .overlay-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+      }
+
+      .overlay-tag {
+        background: rgba(255, 255, 255, 0.9);
+        color: #1f2937;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+
+      .overlay-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .overlay-btn {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        backdrop-filter: blur(10px);
+
+        &.demo {
+          background: rgba(16, 185, 129, 0.9);
+          color: white;
+        }
+
+        &.github {
+          background: rgba(255, 255, 255, 0.9);
+          color: #1f2937;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .project-content {
+      padding: 1.5rem;
+
+      .project-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+        color: var(--text-secondary, #6b7280);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        .read-time,
+        .project-date {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          i {
+            color: var(--primary-color);
+          }
+        }
+      }
+
+      .project-title {
+        margin-bottom: 1rem;
+
+        a {
+          color: var(--text-primary, #111827);
+          text-decoration: none;
+          font-size: 1.25rem;
+          font-weight: 600;
+          line-height: 1.3;
+
+          &:hover {
+            color: var(--primary-color);
+          }
+        }
+      }
+
+      .project-description {
+        color: var(--text-secondary, #4b5563);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+
+        .tag {
+          padding: 0.25rem 0.75rem;
+          background: var(--tag-bg, rgba(59, 130, 246, 0.1));
+          color: var(--tag-text, #3b82f6);
+          border-radius: 9999px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+      }
+
+      .project-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+
+        .project-link {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          font-size: 0.875rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          flex: 1;
+          justify-content: center;
+          min-width: fit-content;
+
+          &.read {
+            background: var(--primary-color);
+            color: white;
+
+            &:hover {
+              background: var(--primary-dark);
+              transform: translateY(-1px);
+            }
+          }
+
+          &.demo {
+            background: #10b981;
+            color: white;
+
+            &:hover {
+              background: #059669;
+              transform: translateY(-1px);
+            }
+          }
+
+          &.github {
+            background: var(--bg-secondary, #f3f4f6);
+            color: var(--text-primary, #111827);
+
+            &:hover {
+              background: #374151;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .no-projects {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary, #6b7280);
+
+    i {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    h3 {
+      margin-bottom: 1rem;
+      color: var(--text-primary, #111827);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .project-card .project-content .project-links {
+      flex-direction: column;
+    }
+
+    .project-card .project-content .project-links .project-link {
+      flex: none;
+    }
+  }
+</style>

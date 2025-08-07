@@ -1,0 +1,49 @@
+# Site settings
+title: "Johnny Hopkins"
+author_name: "Johnny Hopkins"
+job_title: "Data Science Portfolio"
+email: "johnny@example.com"
+description: "Hi I'm Johnny, and I'm a Data Scientist. My portfolio focuses on interesting, value-adding projects I've recently undertaken, with a strong emphasis on business impact. Please visit my Github & LinkedIn pages (or download my Resume) by using the links below!"
+location: "London, UK"
+
+# URLs
+baseurl: ""
+url: ""
+
+# Social media
+github_username: "johnnyhopkins"
+linkedin_username: "johnny-hopkins"
+twitter_username: "johnny_hopkins"
+resume_url: "/assets/resume.pdf"
+
+# Company branding
+company_name: "CyberSecurityRockstar"
+company_url: "https://cybersecurityrockstar.com"
+
+# Theme color - Students can easily change this
+# Options: blue, green, red, purple, orange, pink, dark, teal
+theme_color: "blue"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

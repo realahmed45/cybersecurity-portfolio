@@ -1,0 +1,354 @@
+// Theme System - Easy Color Customization
+
+// Blue Theme (Default)
+.theme-blue {
+  --primary-color: #0066cc;
+  --primary-dark: #004499;
+  --primary-light: #3388dd;
+  --secondary-color: #00aaff;
+  --accent-color: #66ccff;
+  --gradient-start: #0066cc;
+  --gradient-end: #00aaff;
+  --tag-bg: rgba(0, 102, 204, 0.1);
+  --tag-text: #004499;
+}
+
+// Green Theme (Hacker Style)
+.theme-green {
+  --primary-color: #00ff41;
+  --primary-dark: #00cc33;
+  --primary-light: #33ff66;
+  --secondary-color: #39ff14;
+  --accent-color: #66ff66;
+  --gradient-start: #00ff41;
+  --gradient-end: #39ff14;
+  --tag-bg: rgba(0, 255, 65, 0.1);
+  --tag-text: #00cc33;
+}
+
+// Red Theme (Security)
+.theme-red {
+  --primary-color: #ff3333;
+  --primary-dark: #cc0000;
+  --primary-light: #ff6666;
+  --secondary-color: #ff6b6b;
+  --accent-color: #ff9999;
+  --gradient-start: #ff3333;
+  --gradient-end: #ff6b6b;
+  --tag-bg: rgba(255, 51, 51, 0.1);
+  --tag-text: #cc0000;
+}
+
+// Purple Theme
+.theme-purple {
+  --primary-color: #8b5cf6;
+  --primary-dark: #7c3aed;
+  --primary-light: #a78bfa;
+  --secondary-color: #c084fc;
+  --accent-color: #ddd6fe;
+  --gradient-start: #8b5cf6;
+  --gradient-end: #c084fc;
+  --tag-bg: rgba(139, 92, 246, 0.1);
+  --tag-text: #7c3aed;
+}
+
+// Orange Theme
+.theme-orange {
+  --primary-color: #f97316;
+  --primary-dark: #ea580c;
+  --primary-light: #fb923c;
+  --secondary-color: #fed7aa;
+  --accent-color: #ffedd5;
+  --gradient-start: #f97316;
+  --gradient-end: #fed7aa;
+  --tag-bg: rgba(249, 115, 22, 0.1);
+  --tag-text: #ea580c;
+}
+
+// Pink Theme
+.theme-pink {
+  --primary-color: #ec4899;
+  --primary-dark: #db2777;
+  --primary-light: #f472b6;
+  --secondary-color: #f9a8d4;
+  --accent-color: #fce7f3;
+  --gradient-start: #ec4899;
+  --gradient-end: #f9a8d4;
+  --tag-bg: rgba(236, 72, 153, 0.1);
+  --tag-text: #db2777;
+}
+
+// Teal Theme
+.theme-teal {
+  --primary-color: #0d9488;
+  --primary-dark: #0f766e;
+  --primary-light: #14b8a6;
+  --secondary-color: #2dd4bf;
+  --accent-color: #99f6e4;
+  --gradient-start: #0d9488;
+  --gradient-end: #2dd4bf;
+  --tag-bg: rgba(13, 148, 136, 0.1);
+  --tag-text: #0f766e;
+}
+
+// Dark Theme
+.theme-dark {
+  --primary-color: #06d6a0;
+  --primary-dark: #048a6b;
+  --primary-light: #26ddb0;
+  --secondary-color: #118ab2;
+  --accent-color: #073b4c;
+  --gradient-start: #2c3e50;
+  --gradient-end: #34495e;
+  --tag-bg: rgba(6, 214, 160, 0.1);
+  --tag-text: #048a6b;
+
+  // Dark theme overrides
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border-color: #333333;
+}
+
+// ===== NEW THEMES =====
+
+// Light Theme (Clean & Professional)
+.theme-light {
+  --primary-color: #4f46e5;
+  --primary-dark: #3730a3;
+  --primary-light: #6366f1;
+  --secondary-color: #818cf8;
+  --accent-color: #c7d2fe;
+  --gradient-start: #f8fafc;
+  --gradient-end: #e2e8f0;
+  --tag-bg: rgba(79, 70, 229, 0.1);
+  --tag-text: #3730a3;
+
+  // Light theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+}
+
+// White Theme (Minimalist)
+.theme-white {
+  --primary-color: #1e293b;
+  --primary-dark: #0f172a;
+  --primary-light: #334155;
+  --secondary-color: #475569;
+  --accent-color: #94a3b8;
+  --gradient-start: #ffffff;
+  --gradient-end: #f1f5f9;
+  --tag-bg: rgba(30, 41, 59, 0.1);
+  --tag-text: #1e293b;
+
+  // White theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+}
+
+// Grey Theme (Corporate)
+.theme-grey {
+  --primary-color: #6b7280;
+  --primary-dark: #4b5563;
+  --primary-light: #9ca3af;
+  --secondary-color: #d1d5db;
+  --accent-color: #f3f4f6;
+  --gradient-start: #f9fafb;
+  --gradient-end: #e5e7eb;
+  --tag-bg: rgba(107, 114, 128, 0.1);
+  --tag-text: #4b5563;
+
+  // Grey theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #d1d5db;
+}
+
+// Mint Theme (Fresh & Modern)
+.theme-mint {
+  --primary-color: #10b981;
+  --primary-dark: #059669;
+  --primary-light: #34d399;
+  --secondary-color: #6ee7b7;
+  --accent-color: #d1fae5;
+  --gradient-start: #ecfdf5;
+  --gradient-end: #d1fae5;
+  --tag-bg: rgba(16, 185, 129, 0.1);
+  --tag-text: #059669;
+
+  // Mint theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0fdf4;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #d1fae5;
+}
+
+// Sky Theme (Calm & Professional)
+.theme-sky {
+  --primary-color: #0ea5e9;
+  --primary-dark: #0284c7;
+  --primary-light: #38bdf8;
+  --secondary-color: #7dd3fc;
+  --accent-color: #e0f2fe;
+  --gradient-start: #f0f9ff;
+  --gradient-end: #e0f2fe;
+  --tag-bg: rgba(14, 165, 233, 0.1);
+  --tag-text: #0284c7;
+
+  // Sky theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f9ff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #bae6fd;
+}
+
+// Lavender Theme (Soft & Elegant)
+.theme-lavender {
+  --primary-color: #a855f7;
+  --primary-dark: #9333ea;
+  --primary-light: #c084fc;
+  --secondary-color: #d8b4fe;
+  --accent-color: #f3e8ff;
+  --gradient-start: #faf5ff;
+  --gradient-end: #f3e8ff;
+  --tag-bg: rgba(168, 85, 247, 0.1);
+  --tag-text: #9333ea;
+
+  // Lavender theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf5ff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e9d5ff;
+}
+
+// Rose Theme (Warm & Inviting)
+.theme-rose {
+  --primary-color: #f43f5e;
+  --primary-dark: #e11d48;
+  --primary-light: #fb7185;
+  --secondary-color: #fda4af;
+  --accent-color: #fce7e7;
+  --gradient-start: #fff1f2;
+  --gradient-end: #fce7e7;
+  --tag-bg: rgba(244, 63, 94, 0.1);
+  --tag-text: #e11d48;
+
+  // Rose theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #fff1f2;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #fecaca;
+}
+
+// Amber Theme (Warm & Energetic)
+.theme-amber {
+  --primary-color: #f59e0b;
+  --primary-dark: #d97706;
+  --primary-light: #fbbf24;
+  --secondary-color: #fcd34d;
+  --accent-color: #fef3c7;
+  --gradient-start: #fffbeb;
+  --gradient-end: #fef3c7;
+  --tag-bg: rgba(245, 158, 11, 0.1);
+  --tag-text: #d97706;
+
+  // Amber theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #fffbeb;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #fed7aa;
+}
+
+// Emerald Theme (Nature & Growth)
+.theme-emerald {
+  --primary-color: #059669;
+  --primary-dark: #047857;
+  --primary-light: #10b981;
+  --secondary-color: #34d399;
+  --accent-color: #d1fae5;
+  --gradient-start: #ecfdf5;
+  --gradient-end: #d1fae5;
+  --tag-bg: rgba(5, 150, 105, 0.1);
+  --tag-text: #047857;
+
+  // Emerald theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0fdf4;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #bbf7d0;
+}
+
+// Indigo Theme (Deep & Professional)
+.theme-indigo {
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary-color: #a5b4fc;
+  --accent-color: #e0e7ff;
+  --gradient-start: #f8fafc;
+  --gradient-end: #e0e7ff;
+  --tag-bg: rgba(99, 102, 241, 0.1);
+  --tag-text: #4f46e5;
+
+  // Indigo theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #c7d2fe;
+}
+
+// Slate Theme (Modern & Sophisticated)
+.theme-slate {
+  --primary-color: #64748b;
+  --primary-dark: #475569;
+  --primary-light: #94a3b8;
+  --secondary-color: #cbd5e1;
+  --accent-color: #f1f5f9;
+  --gradient-start: #f8fafc;
+  --gradient-end: #f1f5f9;
+  --tag-bg: rgba(100, 116, 139, 0.1);
+  --tag-text: #475569;
+
+  // Slate theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+}
+
+// Cyan Theme (Tech & Innovation)
+.theme-cyan {
+  --primary-color: #06b6d4;
+  --primary-dark: #0891b2;
+  --primary-light: #22d3ee;
+  --secondary-color: #67e8f9;
+  --accent-color: #cffafe;
+  --gradient-start: #f0fdff;
+  --gradient-end: #cffafe;
+  --tag-bg: rgba(6, 182, 212, 0.1);
+  --tag-text: #0891b2;
+
+  // Cyan theme overrides
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0fdff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #a5f3fc;
+}
