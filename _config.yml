@@ -13,16 +13,14 @@ url: ""
 # Social media
 github_username: "johnnyhopkins"
 linkedin_username: "johnny-hopkins"
-twitter_username: "johnny_hopkins"
 resume_url: "/assets/resume.pdf"
 
 # Company branding
 company_name: "CyberSecurityRockstar"
 company_url: "https://cybersecurityrockstar.com"
 
-# Theme color - Students can easily change this
-# Options: blue, green, red, purple, orange, pink, dark, teal
-theme_color: "blue"
+# Theme color - Set to clean gray-orange theme
+theme_color: "clean"
 
 # Build settings
 markdown: kramdown

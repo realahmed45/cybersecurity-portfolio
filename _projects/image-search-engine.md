@@ -2,6 +2,7 @@
 layout: project
 title: "Creating An Image Search Engine Using Deep Learning"
 description: "Built a deep learning based image search engine that helps users find similar images using advanced computer vision techniques."
+image: "/assets/images/projects/image-search-engine.jpg"
 featured: true
 read_time: "15 minute read"
 tags: [Deep Learning, CNN, Data Science, Computer Vision, Python]

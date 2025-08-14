@@ -2,6 +2,7 @@
 layout: project
 title: "Fruit Classification Using A Convolutional Neural Network"
 description: "Built and optimized a CNN to classify different types of fruits with 98% accuracy using deep learning techniques."
+image: "/assets/images/projects/fruit-classification.jpg"
 featured: true
 read_time: "48 minute read"
 tags: [Deep Learning, CNN, Data Science, Computer Vision, Python]
