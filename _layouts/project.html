@@ -278,16 +278,20 @@ layout: default
     }
 
     .project-actions {
-      flex-direction: column;
+      flex-direction: row;
       gap: 12px;
       width: 100%;
+      justify-content: center;
     }
 
     .btn {
-      width: 100%;
+      flex: 0 0 auto;
+      width: auto;
+      min-width: 120px;
+      max-width: 140px;
       justify-content: center;
-      padding: 16px 20px;
-      font-size: 0.9rem;
+      padding: 12px 16px;
+      font-size: 0.85rem;
     }
 
     .project-content h2 {
@@ -307,10 +311,11 @@ layout: default
     }
 
     .nav-link {
-      padding: 16px 24px;
+      padding: 12px 20px;
       font-size: 0.9rem;
-      width: 100%;
-      justify-content: center;
+      width: auto;
+      max-width: 200px;
+      margin: 0 auto;
     }
   }
 
@@ -330,12 +335,14 @@ layout: default
 
     .project-actions {
       gap: 15px;
+      justify-content: center;
     }
 
     .btn {
-      flex: 1;
+      flex: 0 0 auto;
+      min-width: 140px;
+      max-width: 160px;
       justify-content: center;
-      min-width: 120px;
     }
   }
 
@@ -353,13 +360,22 @@ layout: default
     .project-title {
       font-size: 2.3rem;
     }
+
+    .project-actions {
+      gap: 15px;
+    }
+
+    .btn {
+      flex: 0 0 auto;
+      min-width: 140px;
+    }
   }
 
   /* Touch optimizations for project pages */
   @media (hover: none) and (pointer: coarse) {
     .btn,
     .nav-link {
-      min-height: 48px;
+      min-height: 44px;
     }
 
     .btn:active,
