@@ -86,44 +86,51 @@ layout: default
 
   .project-actions {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
+    gap: 10px;
+    padding: 14px 28px;
     border-radius: 8px;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    min-width: 140px;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
   }
 
   .btn-primary {
-    background: #f97316;
+    background: linear-gradient(135deg, #f97316, #ea580c);
     color: white;
-    border: none;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
   }
 
   .btn-primary:hover {
-    background: #ea580c;
+    background: linear-gradient(135deg, #ea580c, #dc2626);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
   }
 
   .btn-secondary {
-    background: transparent;
-    color: #1f2937;
-    border: 2px solid #e5e7eb;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f97316;
+    border: 2px solid #f97316;
+    backdrop-filter: blur(10px);
   }
 
   .btn-secondary:hover {
+    background: #f97316;
+    color: #ffffff;
     border-color: #f97316;
-    color: #f97316;
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
   }
 
   .project-content {
@@ -273,12 +280,14 @@ layout: default
     .project-actions {
       flex-direction: column;
       gap: 12px;
+      width: 100%;
     }
 
     .btn {
       width: 100%;
       justify-content: center;
-      padding: 14px 20px;
+      padding: 16px 20px;
+      font-size: 0.9rem;
     }
 
     .project-content h2 {
@@ -298,8 +307,10 @@ layout: default
     }
 
     .nav-link {
-      padding: 14px 20px;
+      padding: 16px 24px;
       font-size: 0.9rem;
+      width: 100%;
+      justify-content: center;
     }
   }
 
@@ -324,6 +335,7 @@ layout: default
     .btn {
       flex: 1;
       justify-content: center;
+      min-width: 120px;
     }
   }
 
@@ -347,7 +359,7 @@ layout: default
   @media (hover: none) and (pointer: coarse) {
     .btn,
     .nav-link {
-      min-height: 44px;
+      min-height: 48px;
     }
 
     .btn:active,
