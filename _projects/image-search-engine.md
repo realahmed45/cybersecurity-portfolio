@@ -5,7 +5,12 @@ description: "Built a deep learning based image search engine that helps users f
 image: "/assets/images/projects/image-search-engine.jpg"
 featured: true
 read_time: "15 minute read"
-tags: [Deep Learning, CNN, Data Science, Computer Vision, Python]
+tags:
+  - Deep Learning
+  - CNN
+  - Data Science
+  - Computer Vision
+  - Python
 github: "https://github.com/johnnyhopkins/image-search-engine"
 demo: "https://image-search-demo.herokuapp.com"
 date: 2024-01-15
@@ -113,17 +118,17 @@ def find_similar_images(query_features, database_features, top_k=10):
 
 ### 1. Scalability Issues
 
-**Challenge**: Handling large image databases efficiently
+**Challenge**: Handling large image databases efficiently  
 **Solution**: Implemented FAISS indexing and feature caching
 
 ### 2. Feature Quality
 
-**Challenge**: Extracting meaningful visual features
+**Challenge**: Extracting meaningful visual features  
 **Solution**: Fine-tuned pre-trained ResNet50 on domain-specific data
 
 ### 3. Real-time Performance
 
-**Challenge**: Fast search response times
+**Challenge**: Fast search response times  
 **Solution**: Optimized preprocessing pipeline and caching strategies
 
 ## Future Enhancements

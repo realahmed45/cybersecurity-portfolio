@@ -34,7 +34,7 @@ title: Home
     height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    border: 6px solid #d97706;
+    border: 6px solid var(--primary-color, #f97316);
   }
 
   .hero-name {
@@ -57,7 +57,6 @@ title: Home
     position: relative;
   }
 
-  /* White line under both name and title */
   .hero-title::after {
     content: "";
     position: absolute;
@@ -69,7 +68,7 @@ title: Home
   }
 
   .hero-title .orange {
-    color: #f97316;
+    color: var(--primary-color, #f97316);
   }
 
   .hero-description {
@@ -118,7 +117,7 @@ title: Home
   }
 
   .hero-link:hover {
-    color: #f97316;
+    color: var(--primary-color, #f97316);
   }
 
   /* Gray projects section */
@@ -171,7 +170,6 @@ title: Home
     transform: scale(1.05);
   }
 
-  /* Project visualization fallback */
   .project-viz {
     width: 100%;
     height: 100%;
@@ -238,7 +236,6 @@ title: Home
     }
   }
 
-  /* Specific circle positions for project 1 */
   .project-1 .circle-1 {
     width: 60px;
     height: 60px;
@@ -288,7 +285,6 @@ title: Home
     animation-delay: 2.5s;
   }
 
-  /* Food items for project 2 */
   .project-2 .food-apple {
     width: 40px;
     height: 40px;
@@ -328,7 +324,7 @@ title: Home
   .project-2 .food-orange {
     width: 40px;
     height: 40px;
-    background: #f97316;
+    background: var(--primary-color, #f97316);
     border-radius: 50%;
     bottom: 20%;
     right: 30%;
@@ -405,7 +401,7 @@ title: Home
   }
 
   .project-title a:hover {
-    color: #f97316;
+    color: var(--primary-color, #f97316);
   }
 
   .project-description {
@@ -415,45 +411,37 @@ title: Home
     font-size: 0.95rem;
   }
 
-  /* COMPREHENSIVE RESPONSIVE DESIGN */
-
-  /* Mobile First - 320px to 480px */
+  /* Responsive Design */
   @media (max-width: 480px) {
     .hero {
       padding: 40px 0;
     }
-
     .hero-content {
       grid-template-columns: 1fr;
       text-align: center;
       gap: 30px;
       padding: 0 15px;
     }
-
     .profile-photo {
       width: 200px;
       height: 200px;
       border-width: 4px;
     }
-
     .hero-name {
       font-size: 1.8rem;
       margin-bottom: 0;
       text-align: center;
     }
-
     .hero-title {
       font-size: 1.6rem;
       margin: 0 0 20px 0;
       text-align: center;
     }
-
     .hero-title::after {
       left: 50%;
       transform: translateX(-50%);
       right: auto;
     }
-
     .hero-description {
       text-align: left;
       width: 100%;
@@ -462,73 +450,54 @@ title: Home
       margin-bottom: 25px;
       padding: 0 10px;
     }
-
     .hero-meta {
       flex-direction: column;
       gap: 15px;
       align-items: center;
     }
-
     .hero-links {
       gap: 15px;
       flex-wrap: wrap;
       justify-content: center;
     }
-
-    .hero-link {
-      font-size: 0.85rem;
-      padding: 10px 14px;
-      min-height: 44px;
-    }
-
     .projects {
       padding: 40px 0;
     }
-
     .projects-container {
       padding: 0 15px;
     }
-
     .projects-grid {
       grid-template-columns: 1fr;
       gap: 25px;
     }
-
     .project-image {
       height: 200px;
     }
-
     .project-content {
       padding: 16px;
     }
-
     .project-meta {
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
     }
-
     .project-tags {
       gap: 6px;
     }
-
     .tag {
       font-size: 0.7rem;
       padding: 3px 8px;
     }
-
     .project-title {
       font-size: 1.1rem;
       margin-bottom: 12px;
     }
-
     .project-description {
       font-size: 0.85rem;
       line-height: 1.4;
     }
   }
 
-  /* Small tablets - 481px to 767px */
   @media (min-width: 481px) and (max-width: 767px) {
     .hero-content {
       grid-template-columns: 1fr;
@@ -536,51 +505,42 @@ title: Home
       gap: 40px;
       padding: 0 20px;
     }
-
     .profile-photo {
       width: 250px;
       height: 250px;
     }
-
     .hero-name {
       font-size: 2.2rem;
       text-align: center;
     }
-
     .hero-title {
       font-size: 2rem;
       text-align: center;
     }
-
     .hero-title::after {
       left: 50%;
       transform: translateX(-50%);
       right: auto;
     }
-
     .hero-description {
       text-align: left;
       width: 100%;
       max-width: none;
     }
-
     .hero-meta {
       flex-direction: column;
       gap: 20px;
       align-items: center;
     }
-
     .projects-grid {
       grid-template-columns: 1fr;
       gap: 30px;
     }
-
     .projects-container {
       padding: 0 20px;
     }
   }
 
-  /* Large tablets - 768px to 1023px */
   @media (min-width: 768px) and (max-width: 1023px) {
     .hero-content {
       grid-template-columns: 300px 1fr;
@@ -588,60 +548,49 @@ title: Home
       padding: 0 30px;
       text-align: left;
     }
-
     .profile-photo {
       width: 280px;
       height: 280px;
     }
-
     .hero-name {
       font-size: 2.6rem;
       text-align: left;
     }
-
     .hero-title {
       font-size: 2.4rem;
       text-align: left;
     }
-
     .hero-title::after {
       left: 0;
       right: auto;
       transform: none;
     }
-
     .hero-description {
       text-align: left;
       width: 100%;
       max-width: none;
       font-size: 0.95rem;
     }
-
     .hero-meta {
       gap: 50px;
       flex-direction: row;
       align-items: center;
     }
-
     .hero-links {
       gap: 40px;
     }
-
     .projects-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
     }
-
     .projects-container {
       padding: 0 30px;
     }
-
     .project-image {
       height: 250px;
     }
   }
 
-  /* Desktop - 1024px+ */
   @media (min-width: 1024px) {
     .hero-content {
       grid-template-columns: 350px 1fr;
@@ -649,86 +598,69 @@ title: Home
       padding: 0 40px;
       text-align: left;
     }
-
     .hero-name::after {
       left: 0;
       transform: none;
       width: 100%;
     }
-
     .hero-title::after {
       left: 0;
       right: auto;
       transform: none;
     }
-
     .hero-meta {
       flex-direction: row;
       align-items: center;
       gap: 80px;
     }
-
     .hero-links {
       gap: 60px;
     }
-
     .projects-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  /* Landscape mobile orientation */
   @media (max-width: 767px) and (orientation: landscape) {
     .hero {
       padding: 25px 0;
     }
-
     .hero-content {
       gap: 25px;
     }
-
     .profile-photo {
       width: 150px;
       height: 150px;
     }
-
     .hero-name {
       font-size: 1.8rem;
     }
-
     .hero-title {
       font-size: 1.6rem;
       margin: 15px 0 20px 0;
     }
-
     .hero-description {
       font-size: 0.85rem;
       margin-bottom: 20px;
     }
-
     .projects {
       padding: 30px 0;
     }
   }
 
-  /* Touch device optimizations */
   @media (hover: none) and (pointer: coarse) {
     .project-card:hover {
       transform: none;
     }
-
     .project-card:active {
       transform: scale(0.98);
     }
-
-    .hero-link,
-    .btn {
+    .hero-link {
       min-height: 44px;
       padding: 12px 16px;
     }
   }
 
-  /* High DPI displays */
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .profile-photo {
       border-width: 4px;
@@ -736,40 +668,47 @@ title: Home
   }
 </style>
 
-<!-- Black Header Section -->
+<!-- Header Section -->
 <section class="hero">
   <div class="hero-content">
     <div class="hero-image">
       <img
         src="/assets/images/profile.jpg"
-        alt="Johnny Hopkins"
+        alt="{{ site.author_name | default: 'Profile Photo' }}"
         class="profile-photo"
-        onerror="this.src='https://via.placeholder.com/300x300/d97706/ffffff?text=Photo'"
+        onerror="this.src='https://via.placeholder.com/300x300/f97316/ffffff?text=Photo'"
       />
     </div>
 
     <div class="hero-text">
-      <h1 class="hero-name">Johnny Hopkins</h1>
+      <h1 class="hero-name">{{ site.author_name | default: "Your Name" }}</h1>
       <h2 class="hero-title">
-        Data Science <span class="orange">Portfolio</span>
+        {% if site.job_title %} {% assign title_parts = site.job_title | split:
+        ' ' %} {% if title_parts.size > 2 %} {% for part in title_parts limit:2
+        %}{{ part }}{% unless forloop.last %} {% endunless %}{% endfor %}
+        <span class="orange"
+          >{% for part in title_parts offset:2 %}{{ part }}{% unless
+          forloop.last %} {% endunless %}{% endfor %}</span
+        >
+        {% else %} {{ site.job_title }} {% endif %} {% else %} Your Job
+        <span class="orange">Title</span>
+        {% endif %}
       </h2>
 
       <p class="hero-description">
-        Hi I'm Johnny, and I'm a Data Scientist. My portfolio focuses on
-        interesting, value-adding projects I've recently undertaken, with a
-        strong emphasis on business impact. Please visit my Github & LinkedIn
-        pages (or download my Resume) by using the links below!
+        {{ site.description | default: "Your portfolio description goes here.
+        Update this in _config.yml to customize your introduction." }}
       </p>
 
       <div class="hero-meta">
         <div class="hero-location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>London, UK</span>
+          <span>{{ site.location | default: "Your Location" }}</span>
         </div>
 
         <div class="hero-links">
           <a
-            href="https://github.com/johnnyhopkins"
+            href="https://github.com/{{ site.github_username | default: 'yourusername' }}"
             class="hero-link"
             target="_blank"
           >
@@ -778,7 +717,7 @@ title: Home
           </a>
 
           <a
-            href="https://linkedin.com/in/johnny-hopkins"
+            href="https://linkedin.com/in/{{ site.linkedin_username | default: 'yourusername' }}"
             class="hero-link"
             target="_blank"
           >
@@ -800,33 +739,124 @@ title: Home
   </div>
 </section>
 
-<!-- Gray Projects Section -->
+<!-- Projects Section -->
 <section class="projects">
   <div class="projects-container">
     <div class="projects-grid">
-      <!-- Project 1 -->
+      <!-- Dynamic Projects from Collection -->
+      {% assign featured_projects = site.projects | where: "featured", true %}
+      {% if featured_projects.size > 0 %} {% for project in featured_projects
+      limit:4 %}
       <article
         class="project-card"
-        onclick="window.location.href='/projects/image-search-engine/'"
+        onclick="window.location.href='{{ project.url | relative_url }}'"
+      >
+        <div class="project-image">
+          {% if project.image %}
+          <img
+            src="{{ project.image | relative_url }}"
+            alt="{{ project.title }}"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+          />
+          {% endif %} {% if project.image %} {% assign viz_style = "display:
+          none" %} {% else %} {% assign viz_style = "display: flex" %} {% endif
+          %}
+          <div class="project-viz project-{{ forloop.index }}">
+            <div class="viz-center">
+              <div class="laptop-icon">
+                <i
+                  class="fas fa-network-wired"
+                  style="
+                    color: var(--primary-color, #f97316);
+                    font-size: 1.2rem;
+                  "
+                ></i>
+              </div>
+            </div>
+
+            <div class="viz-circles">
+              {% if forloop.index == 1 %}
+              <div class="viz-circle circle-1">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="viz-circle circle-2">
+                <i class="fas fa-brain"></i>
+              </div>
+              <div class="viz-circle circle-3">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="viz-circle circle-4"><i class="fas fa-code"></i></div>
+              <div class="viz-circle circle-5">
+                <i class="fas fa-server"></i>
+              </div>
+              <div class="viz-circle circle-6"><i class="fas fa-eye"></i></div>
+              {% elsif forloop.index == 2 %}
+              <div class="food-apple"></div>
+              <div class="food-banana"></div>
+              <div class="food-avocado"></div>
+              <div class="food-kiwi"></div>
+              <div class="food-orange"></div>
+              <div class="food-lemon"></div>
+              {% else %}
+              <div class="viz-circle circle-1"><i class="fas fa-cogs"></i></div>
+              <div class="viz-circle circle-2">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <div class="viz-circle circle-3">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            {% if project.read_time %}
+            <span class="read-time">
+              <i class="fas fa-clock"></i>
+              {{ project.read_time }}
+            </span>
+            {% endif %} {% if project.tags %}
+            <div class="project-tags">
+              {% for tag in project.tags limit:3 %}
+              <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          <h3 class="project-title">
+            <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+          </h3>
+
+          <p class="project-description">{{ project.description }}</p>
+        </div>
+      </article>
+      {% endfor %} {% else %}
+      <!-- Fallback static projects -->
+      <article
+        class="project-card"
+        onclick="window.location.href='{{ '/projects/image-search-engine/' | relative_url }}'"
       >
         <div class="project-image">
           <img
-            src="/assets/images/projects/image-search-engine.jpg"
+            src="{{ '/assets/images/projects/image-search-engine.jpg' | relative_url }}"
             alt="Creating An Image Search Engine Using Deep Learning"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
           />
-
-          <!-- Fallback visualization -->
           <div class="project-viz project-1" style="display: none">
             <div class="viz-center">
               <div class="laptop-icon">
                 <i
                   class="fas fa-network-wired"
-                  style="color: #f97316; font-size: 1.2rem"
+                  style="
+                    color: var(--primary-color, #f97316);
+                    font-size: 1.2rem;
+                  "
                 ></i>
               </div>
             </div>
-
             <div class="viz-circles">
               <div class="viz-circle circle-1">
                 <i class="fas fa-database"></i>
@@ -845,29 +875,23 @@ title: Home
             </div>
           </div>
         </div>
-
         <div class="project-content">
           <div class="project-meta">
             <span class="read-time">
               <i class="fas fa-clock"></i>
               15 minute read
             </span>
-
             <div class="project-tags">
               <span class="tag">Deep Learning</span>
               <span class="tag">CNN</span>
               <span class="tag">Data Science</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">Python</span>
             </div>
           </div>
-
           <h3 class="project-title">
-            <a href="/projects/image-search-engine/"
+            <a href="{{ '/projects/image-search-engine/' | relative_url }}"
               >Creating An Image Search Engine Using Deep Learning</a
             >
           </h3>
-
           <p class="project-description">
             Built a deep learning based image search engine that helps users
             find similar images using advanced computer vision techniques.
@@ -875,29 +899,28 @@ title: Home
         </div>
       </article>
 
-      <!-- Project 2 -->
       <article
         class="project-card"
-        onclick="window.location.href='/projects/fruit-classification/'"
+        onclick="window.location.href='{{ '/projects/fruit-classification/' | relative_url }}'"
       >
         <div class="project-image">
           <img
-            src="/assets/images/projects/fruit-classification.jpg"
+            src="{{ '/assets/images/projects/fruit-classification.jpg' | relative_url }}"
             alt="Fruit Classification Using A Convolutional Neural Network"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
           />
-
-          <!-- Fallback visualization -->
           <div class="project-viz project-2" style="display: none">
             <div class="viz-center">
               <div class="laptop-icon">
                 <i
                   class="fas fa-network-wired"
-                  style="color: #f97316; font-size: 1.2rem"
+                  style="
+                    color: var(--primary-color, #f97316);
+                    font-size: 1.2rem;
+                  "
                 ></i>
               </div>
             </div>
-
             <div class="viz-circles">
               <div class="food-apple"></div>
               <div class="food-banana"></div>
@@ -908,146 +931,212 @@ title: Home
             </div>
           </div>
         </div>
-
         <div class="project-content">
           <div class="project-meta">
             <span class="read-time">
               <i class="fas fa-clock"></i>
               48 minute read
             </span>
-
             <div class="project-tags">
               <span class="tag">Deep Learning</span>
               <span class="tag">CNN</span>
-              <span class="tag">Data Science</span>
               <span class="tag">Computer Vision</span>
-              <span class="tag">Python</span>
             </div>
           </div>
-
           <h3 class="project-title">
-            <a href="/projects/fruit-classification/"
+            <a href="{{ '/projects/fruit-classification/' | relative_url }}"
               >Fruit Classification Using A Convolutional Neural Network</a
             >
           </h3>
-
           <p class="project-description">
             Built and optimized a CNN to classify different types of fruits with
             98% accuracy using deep learning techniques.
           </p>
         </div>
       </article>
+      {% endif %}
     </div>
   </div>
 </section>
 
 <script>
   function generatePortfolioResume() {
-    // Get portfolio data from the current page
-    const portfolioData = {
-      name: "Johnny Hopkins",
-      title: "Data Science Portfolio",
-      description:
-        "Hi I'm Johnny, and I'm a Data Scientist. My portfolio focuses on interesting, value-adding projects I've recently undertaken, with a strong emphasis on business impact. Please visit my Github & LinkedIn pages by using the links below!",
-      location: "London, UK",
-      github: "https://github.com/johnnyhopkins",
-      linkedin: "https://linkedin.com/in/johnny-hopkins",
-      projects: [
-        {
-          title: "Creating An Image Search Engine Using Deep Learning",
-          description:
-            "Built a deep learning based image search engine that helps users find similar images using advanced computer vision techniques.",
-          tags: "Deep Learning, CNN, Data Science, Computer Vision, Python",
-        },
-        {
-          title: "Fruit Classification Using A Convolutional Neural Network",
-          description:
-            "Built and optimized a CNN to classify different types of fruits with 98% accuracy using deep learning techniques.",
-          tags: "Deep Learning, CNN, Data Science, Computer Vision, Python",
-        },
-      ],
+    var portfolioData = {
+      name: document.querySelector(".hero-name")
+        ? document.querySelector(".hero-name").textContent.trim()
+        : "Your Name",
+      title: document.querySelector(".hero-title")
+        ? document.querySelector(".hero-title").textContent.trim()
+        : "Your Job Title",
+      description: document.querySelector(".hero-description")
+        ? document.querySelector(".hero-description").textContent.trim()
+        : "Your description here",
+      location: document.querySelector(".hero-location span")
+        ? document.querySelector(".hero-location span").textContent.trim()
+        : "Your Location",
+      github: document.querySelector('.hero-link[href*="github"]')
+        ? document.querySelector('.hero-link[href*="github"]').href
+        : "https://github.com/yourusername",
+      linkedin: document.querySelector('.hero-link[href*="linkedin"]')
+        ? document.querySelector('.hero-link[href*="linkedin"]').href
+        : "https://linkedin.com/in/yourusername",
+      projects: [],
     };
 
-    // Generate HTML resume content
-    let resumeHTML = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>${portfolioData.name} - Resume</title>
-            <style>
-                body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; }
-                .header { text-align: center; border-bottom: 3px solid #f97316; padding-bottom: 20px; margin-bottom: 30px; }
-                .name { font-size: 28px; font-weight: bold; margin-bottom: 5px; }
-                .title { font-size: 18px; color: #f97316; margin-bottom: 10px; }
-                .contact { font-size: 12px; color: #666; }
-                .section { margin-bottom: 25px; }
-                .section h3 { color: #f97316; border-bottom: 1px solid #f97316; padding-bottom: 5px; }
-                .project { margin-bottom: 20px; padding: 15px; border-left: 3px solid #f97316; background: #f9f9f9; }
-                .project-title { font-weight: bold; margin-bottom: 5px; }
-                .project-desc { margin-bottom: 8px; font-size: 14px; }
-                .project-tags { font-size: 12px; color: #f97316; font-style: italic; }
-                @media print { body { margin: 0; padding: 20px; } }
-            </style>
-        </head>
-        <body>
-            <div class="header">
-                <div class="name">${portfolioData.name}</div>
-                <div class="title">${portfolioData.title}</div>
-                <div class="contact">
-                    ${portfolioData.location}<br>
-                    ${portfolioData.github}<br>
-                    ${portfolioData.linkedin}
-                </div>
-            </div>
-            
-            <div class="section">
-                <h3>Professional Summary</h3>
-                <p>${portfolioData.description}</p>
-            </div>
-            
-            <div class="section">
-                <h3>Featured Projects</h3>`;
+    var projectCards = document.querySelectorAll(".project-card");
+    for (var i = 0; i < projectCards.length && i < 10; i++) {
+      var card = projectCards[i];
+      var titleElement =
+        card.querySelector(".project-title a") ||
+        card.querySelector(".project-title");
+      var descElement = card.querySelector(".project-description");
+      var tagElements = card.querySelectorAll(".tag");
 
-    portfolioData.projects.forEach((project) => {
-      resumeHTML += `
-                <div class="project">
-                    <div class="project-title">${project.title}</div>
-                    <div class="project-desc">${project.description}</div>
-                    <div class="project-tags">Technologies: ${project.tags}</div>
-                </div>`;
-    });
+      var tags = [];
+      for (var j = 0; j < tagElements.length; j++) {
+        tags.push(tagElements[j].textContent.trim());
+      }
 
-    resumeHTML += `
-            </div>
-            
-            <div class="section">
-                <h3>Technical Skills</h3>
-                <p><strong>Programming Languages:</strong> Python, R, SQL, JavaScript<br>
-                <strong>Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, Keras<br>
-                <strong>Data Science:</strong> Pandas, NumPy, Matplotlib, Seaborn<br>
-                <strong>Tools & Technologies:</strong> Git, Docker, AWS, Jupyter, VS Code</p>
-            </div>
-        </body>
-        </html>`;
+      if (titleElement && descElement) {
+        portfolioData.projects.push({
+          title: titleElement.textContent.trim(),
+          description: descElement.textContent.trim(),
+          tags: tags.join(", "),
+        });
+      }
+    }
 
-    // Create and download the resume
-    const blob = new Blob([resumeHTML], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Johnny_Hopkins_Resume.html";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    var resumeHTML =
+      "<!DOCTYPE html>" +
+      "<html>" +
+      "<head>" +
+      '<meta charset="UTF-8">' +
+      "<title>" +
+      escapeHtml(portfolioData.name) +
+      " - Resume</title>" +
+      "<style>" +
+      "body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333; }" +
+      ".header { text-align: center; border-bottom: 3px solid #f97316; padding-bottom: 20px; margin-bottom: 30px; }" +
+      ".name { font-size: 28px; font-weight: bold; margin-bottom: 5px; color: #333; }" +
+      ".title { font-size: 18px; color: #f97316; margin-bottom: 10px; font-weight: 500; }" +
+      ".contact { font-size: 12px; color: #666; line-height: 1.4; }" +
+      ".section { margin-bottom: 25px; }" +
+      ".section h3 { color: #f97316; border-bottom: 1px solid #f97316; padding-bottom: 5px; margin-bottom: 15px; font-size: 18px; }" +
+      ".project { margin-bottom: 20px; padding: 15px; border-left: 3px solid #f97316; background: #f9f9f9; border-radius: 0 5px 5px 0; }" +
+      ".project-title { font-weight: bold; margin-bottom: 5px; color: #333; font-size: 16px; }" +
+      ".project-desc { margin-bottom: 8px; font-size: 14px; color: #555; line-height: 1.5; }" +
+      ".project-tags { font-size: 12px; color: #f97316; font-style: italic; }" +
+      ".summary { font-size: 14px; line-height: 1.6; color: #555; }" +
+      ".skills { font-size: 14px; line-height: 1.8; color: #555; }" +
+      ".skills strong { color: #333; }" +
+      "@media print { body { margin: 0; padding: 20px; font-size: 12px; } .header { page-break-after: avoid; } }" +
+      "</style>" +
+      "</head>" +
+      "<body>" +
+      '<div class="header">' +
+      '<div class="name">' +
+      escapeHtml(portfolioData.name) +
+      "</div>" +
+      '<div class="title">' +
+      escapeHtml(portfolioData.title) +
+      "</div>" +
+      '<div class="contact">' +
+      escapeHtml(portfolioData.location) +
+      "<br>" +
+      '<a href="' +
+      escapeHtml(portfolioData.github) +
+      '">' +
+      escapeHtml(portfolioData.github) +
+      "</a><br>" +
+      '<a href="' +
+      escapeHtml(portfolioData.linkedin) +
+      '">' +
+      escapeHtml(portfolioData.linkedin) +
+      "</a>" +
+      "</div>" +
+      "</div>" +
+      '<div class="section">' +
+      "<h3>Professional Summary</h3>" +
+      '<div class="summary">' +
+      escapeHtml(portfolioData.description) +
+      "</div>" +
+      "</div>";
 
-    // Also open print dialog for immediate printing/PDF saving
-    const printWindow = window.open("", "_blank");
-    printWindow.document.write(resumeHTML);
-    printWindow.document.close();
-    setTimeout(() => {
-      printWindow.print();
-    }, 500);
+    if (portfolioData.projects.length > 0) {
+      resumeHTML += '<div class="section"><h3>Featured Projects</h3>';
+
+      for (var k = 0; k < portfolioData.projects.length; k++) {
+        var project = portfolioData.projects[k];
+        resumeHTML +=
+          '<div class="project">' +
+          '<div class="project-title">' +
+          escapeHtml(project.title) +
+          "</div>" +
+          '<div class="project-desc">' +
+          escapeHtml(project.description) +
+          "</div>" +
+          '<div class="project-tags">Technologies: ' +
+          escapeHtml(project.tags) +
+          "</div>" +
+          "</div>";
+      }
+
+      resumeHTML += "</div>";
+    }
+
+    resumeHTML +=
+      '<div class="section">' +
+      "<h3>Technical Skills</h3>" +
+      '<div class="skills">' +
+      "<strong>Programming Languages:</strong> Python, R, SQL, JavaScript<br>" +
+      "<strong>Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, Keras<br>" +
+      "<strong>Data Science:</strong> Pandas, NumPy, Matplotlib, Seaborn, Plotly<br>" +
+      "<strong>Web Development:</strong> HTML, CSS, React, Node.js, Flask, Django<br>" +
+      "<strong>Tools & Technologies:</strong> Git, Docker, AWS, Jupyter, VS Code, Linux<br>" +
+      "<strong>Databases:</strong> PostgreSQL, MySQL, MongoDB, Redis" +
+      "</div>" +
+      "</div>" +
+      "</body>" +
+      "</html>";
+
+    try {
+      var blob = new Blob([resumeHTML], { type: "text/html" });
+      var url = URL.createObjectURL(blob);
+      var link = document.createElement("a");
+      link.href = url;
+      link.download = sanitizeFilename(portfolioData.name) + "_Resume.html";
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setTimeout(function () {
+        URL.revokeObjectURL(url);
+      }, 100);
+
+      var printWindow = window.open("", "_blank");
+      if (printWindow) {
+        printWindow.document.write(resumeHTML);
+        printWindow.document.close();
+        setTimeout(function () {
+          printWindow.print();
+        }, 500);
+      }
+    } catch (error) {
+      console.error("Error generating resume:", error);
+      alert("Error generating resume. Please try again.");
+    }
+  }
+
+  function escapeHtml(text) {
+    if (!text) return "";
+    var div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function sanitizeFilename(name) {
+    if (!name) return "Resume";
+    return name.replace(/[^a-zA-Z0-9\-_]/g, "_").replace(/_{2,}/g, "_");
   }
 </script>

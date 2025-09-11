@@ -19,7 +19,7 @@ resume_url: "/assets/resume.pdf"
 company_name: "CyberSecurityRockstar"
 company_url: "https://cybersecurityrockstar.com"
 
-# Theme color - Set to clean gray-orange theme
+# Theme color - Available options: blue, green, red, purple, orange, pink, teal, dark, clean
 theme_color: "clean"
 
 # Build settings
@@ -35,6 +35,19 @@ collections:
     output: true
     permalink: /projects/:name/
 
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
 # Sass
 sass:
   sass_dir: _sass
@@ -45,3 +58,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - vendor/

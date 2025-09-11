@@ -1,65 +1,77 @@
-# 🚀 Cybersecurity Student Portfolio Template
+# 🚀 Jekyll Portfolio Template - Complete & Fixed
 
-A professional, customizable portfolio template built with Jekyll for cybersecurity students. Features easy color theming, responsive design, and seamless GitHub Pages deployment.
+A professional, fully functional portfolio template built with Jekyll for data scientists and developers. Features dynamic content loading, 8 color themes, responsive design, and seamless GitHub Pages deployment.
 
-## ✨ Features
+## ✅ What's Been Fixed
 
-- **8 Color Themes** - Easy one-line theme switching
-- **Responsive Design** - Looks perfect on all devices
-- **GitHub Pages Ready** - Deploy in minutes
-- **Project Showcase** - Beautiful project cards with animations
-- **SEO Optimized** - Built-in meta tags and structured data
-- **Fast Loading** - Optimized performance
-- **Easy Content Management** - Simple Markdown files
+### Major Issues Resolved
+
+1. **✅ Dynamic Content Loading**: Homepage now pulls data from `_config.yml` instead of hard-coded values
+2. **✅ Project Collection**: Projects are dynamically loaded from `_projects/` folder
+3. **✅ Theme Switching**: Complete 8-theme color system with live switching
+4. **✅ Missing Layouts**: Added `page.html` and `post.html` layouts
+5. **✅ 404 Page**: Fixed layout reference and enhanced design
+6. **✅ Resume Generation**: Dynamic resume creation from site data
+7. **✅ Build Warnings**: Resolved all Jekyll build warnings
+8. **✅ Responsive Design**: Enhanced mobile-first responsive design
+
+### New Features Added
+
+- **🎨 Live Theme Switcher**: Change themes without page reload
+- **📱 Mobile Optimization**: Better touch interactions and layouts
+- **🔍 SEO Enhancements**: Meta tags, Open Graph, Twitter Cards
+- **♿ Accessibility**: Improved screen reader support and keyboard navigation
+- **⚡ Performance**: Optimized loading and caching
 
 ## 🎨 Available Themes
 
-Choose from 8 professional themes by changing one line in `_config.yml`:
+Choose from 8 professional themes by changing `theme_color` in `_config.yml`:
 
-- 🔵 **Blue** (Default) - `theme_color: "blue"`
-- 🟢 **Green** (Hacker) - `theme_color: "green"`
-- 🔴 **Red** (Security) - `theme_color: "red"`
-- 🟣 **Purple** - `theme_color: "purple"`
-- 🟠 **Orange** - `theme_color: "orange"`
-- 🩷 **Pink** - `theme_color: "pink"`
-- 🫐 **Teal** - `theme_color: "teal"`
-- ⚫ **Dark** - `theme_color: "dark"`
+1. **Clean** (Default) - `theme_color: "clean"` - Gray/White with Orange accents
+2. **Blue** - `theme_color: "blue"` - Professional Blue
+3. **Green** - `theme_color: "green"` - Cybersecurity/Hacker Green
+4. **Red** - `theme_color: "red"` - Security/Alert Red
+5. **Purple** - `theme_color: "purple"` - Creative Purple
+6. **Orange** - `theme_color: "orange"` - Vibrant Orange
+7. **Pink** - `theme_color: "pink"` - Modern Pink
+8. **Teal** - `theme_color: "teal"` - Professional Teal
+9. **Dark** - `theme_color: "dark"` - Professional Dark Mode
 
 ## 🚀 Quick Setup
 
-### 1. Prerequisites
-
-- Ruby 2.7+ installed
-- Jekyll and Bundler installed
+### Prerequisites
 
 ```bash
+# Install Ruby (2.7+ required)
+# Install Jekyll and Bundler
 gem install jekyll bundler
 ```
 
-### 2. Installation
+### Installation
 
 ```bash
-# Clone or download this repository
-git clone https://github.com/your-repo/cybersecurity-portfolio-template.git
-cd cybersecurity-portfolio-template
+# Clone the repository
+git clone <your-repo-url>
+cd jekyll-portfolio-template
 
 # Install dependencies
 bundle install
 
 # Start development server
-bundle exec jekyll serve
+bundle exec jekyll serve --livereload
 ```
 
 Visit `http://localhost:4000` to see your site!
 
-### 3. Customization
+## ⚙️ Configuration
 
-**Edit `_config.yml`:**
+### 1. Edit `_config.yml`
 
 ```yaml
 # Your Information
 title: "Your Name"
 author_name: "Your Full Name"
+job_title: "Your Job Title"
 email: "your.email@example.com"
 description: "Your portfolio description..."
 location: "Your City, Country"
@@ -68,85 +80,83 @@ location: "Your City, Country"
 github_username: "your-github-username"
 linkedin_username: "your-linkedin-username"
 
-# Choose Theme
-theme_color: "blue" # Change this to any theme
+# Choose Theme (see available themes above)
+theme_color: "blue"
 
 # Company Branding
-company_name: "CyberSecurityRockstar"
-company_url: "https://cybersecurityrockstar.com"
+company_name: "Your Company"
+company_url: "https://yourcompany.com"
 ```
 
-**Add Your Photo:**
+### 2. Add Your Content
 
-- Replace `assets/images/profile.jpg` with your photo
-- Recommended: 300x300 pixels, high quality
+**Replace Profile Photo:**
 
-### 4. Adding Projects
+- Add your photo as `/assets/images/profile.jpg`
+- Recommended: 300x300px, high quality
 
-Create files in `_projects/` folder:
-
-**Example: `_projects/my-project.md`**
+**Add Projects:**
+Create markdown files in `_projects/` folder:
 
 ```yaml
 ---
 layout: project
-title: "My Awesome Project"
-description: "Brief description here"
-featured: true
+title: "Your Project Title"
+description: "Brief project description"
+featured: true # Shows on homepage
 read_time: "10 minute read"
-tags: [Python, Machine Learning, Flask]
+tags:
+  - Python
+  - Machine Learning
+  - Web Development
 github: "https://github.com/username/project"
 demo: "https://demo-link.com"
-date: 2024-08-07
+date: 2024-01-15
+image: "/assets/images/projects/project-image.jpg" # Optional
 ---
+## Your project content here...
 
-## Project Overview
-Write your project details here using Markdown...
-
-## Technologies Used
-- Python
-- TensorFlow
-- Flask
-
-## Results
-Your results and conclusions...
+Write your project details using Markdown.
 ```
-
-### 5. Deploy to GitHub Pages
-
-1. Create repository named `your-username.github.io`
-2. Push your code to the repository
-3. Go to repository Settings → Pages
-4. Select "Deploy from a branch" → "main"
-5. Your site will be live at `https://your-username.github.io`
 
 ## 📁 Project Structure
 
 ```
-cybersecurity-portfolio-template/
-├── _config.yml              # Site configuration
+jekyll-portfolio-template/
+├── _config.yml              # Site configuration (EDIT THIS!)
 ├── _layouts/                # Page templates
 │   ├── default.html        # Main layout
+│   ├── page.html           # Page layout
+│   ├── post.html           # Blog post layout
 │   └── project.html        # Project page layout
 ├── _sass/                   # Styling
-│   ├── _variables.scss     # Variables
-│   ├── _themes.scss        # Color themes
+│   ├── _variables.scss     # CSS variables
+│   ├── _themes.scss        # 8 color themes
 │   ├── _base.scss         # Base styles
 │   └── _components.scss    # Component styles
 ├── assets/
 │   ├── css/main.scss       # Main stylesheet
-│   ├── js/main.js         # JavaScript
-│   └── images/            # Images
-├── _projects/              # Project files
-├── pages/
-│   ├── index.html         # Homepage
-│   ├── about.md           # About page
-│   ├── projects.html      # Projects listing
-│   └── contact.md         # Contact page
+│   ├── js/main.js         # JavaScript with theme switcher
+│   └── images/            # Your images
+│       ├── profile.jpg    # Your profile photo
+│       └── projects/      # Project images
+├── _projects/              # Your project files
+│   ├── project-1.md
+│   └── project-2.md
+├── _posts/                 # Blog posts (optional)
+├── 404.html               # Custom 404 page
+├── index.html             # Homepage
 └── README.md              # This file
 ```
 
-## 🎯 Content Management
+## 📝 Content Management
+
+### Adding Projects
+
+1. Create a new file in `_projects/` folder
+2. Use the project template with front matter
+3. Set `featured: true` to show on homepage
+4. Add project images to `/assets/images/projects/`
 
 ### Project Front Matter Options
 
@@ -154,73 +164,79 @@ cybersecurity-portfolio-template/
 ---
 layout: project # Always "project"
 title: "Project Name" # Required
-description: "Brief desc" # Shows in project cards
-featured: true # Show on homepage (optional)
-read_time: "15 min read" # Estimated reading time
-tags: [Tag1, Tag2] # Technology tags
+description: "Brief description" # Shows in cards
+featured: true # Show on homepage
+read_time: "15 min read" # Reading time estimate
+tags: # Technology tags (list format)
+  - Python
+  - TensorFlow
+  - React
 github: "https://..." # GitHub URL (optional)
 demo: "https://..." # Live demo URL (optional)
-image: "/assets/images/project.jpg" # Custom image (optional)
-date: 2024-08-07 # Project date
+image: "/assets/images/projects/image.jpg" # Custom image (optional)
+date: 2024-01-15 # Project date
 ---
 ```
 
-### Changing Themes
+### Theme Switching
 
-Simply edit `_config.yml`:
+**Method 1: Configuration File**
 
 ```yaml
-theme_color: "green" # Changes entire site theme
+# In _config.yml
+theme_color: "blue" # Changes default theme
 ```
 
-### Adding Custom Themes
+**Method 2: Live Theme Switcher**
 
-Edit `_sass/_themes.scss` to create custom color schemes.
+- Use the theme switcher widget (appears automatically)
+- Changes are saved to localStorage
+- No page reload required
 
-## 🛠️ Customization
+**Method 3: Programmatically**
 
-### Colors
+```javascript
+// In browser console or custom JS
+window.portfolioTheme.apply("dark");
+```
 
-All themes use CSS custom properties, making customization easy:
+## 🎨 Customization
+
+### Colors and Theming
+
+Edit `_sass/_themes.scss` to customize or add new themes:
 
 ```scss
 .theme-custom {
   --primary-color: #your-color;
   --primary-dark: #darker-shade;
-  --gradient-start: #gradient-start;
-  --gradient-end: #gradient-end;
+  --primary-light: #lighter-shade;
+  // ... other CSS variables
 }
 ```
-
-### Content
-
-- **Homepage**: Edit `index.html`
-- **About**: Edit `about.md`
-- **Projects**: Add files to `_projects/`
-- **Contact**: Edit `contact.md`
 
 ### Styling
 
 - **Variables**: `_sass/_variables.scss`
 - **Components**: `_sass/_components.scss`
+- **Base styles**: `_sass/_base.scss`
 - **Themes**: `_sass/_themes.scss`
 
-## 🔧 Advanced Features
+### Layout Customization
 
-### Contact Form
+- **Homepage**: Edit `index.html`
+- **Project pages**: Edit `_layouts/project.html`
+- **Global layout**: Edit `_layouts/default.html`
 
-The contact page includes a form. To activate:
+## 🚀 Deployment
 
-1. Sign up at [Formspree.io](https://formspree.io)
-2. Replace `your-form-id` in `contact.md` with your Formspree form ID
+### GitHub Pages (Recommended)
 
-### Google Analytics
-
-Add to `_config.yml`:
-
-```yaml
-google_analytics: "UA-XXXXXXXXX-X"
-```
+1. Create repository named `your-username.github.io`
+2. Push your code to the main branch
+3. Go to Settings → Pages
+4. Select "Deploy from a branch" → "main"
+5. Your site will be live at `https://your-username.github.io`
 
 ### Custom Domain
 
@@ -228,28 +244,47 @@ google_analytics: "UA-XXXXXXXXX-X"
 2. Configure DNS with your domain provider
 3. Enable HTTPS in GitHub Pages settings
 
-## 📱 Mobile Optimization
+### Other Platforms
 
-The template is fully responsive with:
+- **Netlify**: Connect your GitHub repo
+- **Vercel**: Import your GitHub repo
+- **Firebase Hosting**: Use `firebase deploy`
 
-- Touch-optimized navigation
-- Responsive images and layouts
-- Fast loading on mobile networks
-- Optimized animations
+## 🔧 Advanced Features
 
-## 🔍 SEO Features
+### Google Analytics
 
-Built-in SEO optimization:
+Add to `_config.yml`:
+
+```yaml
+google_analytics: "G-XXXXXXXXXX"
+```
+
+### Contact Form
+
+The template supports Formspree integration. Update the form action in your contact page.
+
+### SEO Optimization
+
+Built-in SEO features:
 
 - Meta tags and descriptions
 - Open Graph tags for social sharing
 - Structured data markup
 - XML sitemap generation
-- Fast loading speeds
 
-## 🆘 Support
+## 📱 Mobile Optimization
 
-### Troubleshooting
+Features for mobile users:
+
+- Touch-optimized navigation
+- Responsive images and layouts
+- Fast loading on mobile networks
+- Optimized animations and interactions
+
+## 🆘 Troubleshooting
+
+### Common Issues
 
 **Site not loading:**
 
@@ -269,31 +304,105 @@ Built-in SEO optimization:
 - Ensure images are in `assets/images/`
 - Verify image file names match exactly
 
+**Build errors:**
+
+- Check Jekyll version compatibility
+- Run `bundle update` to update gems
+- Check for YAML syntax errors
+
 ### Getting Help
 
-- 📧 Email: support@cybersecurityrockstar.com
-- 💬 Issues: Use GitHub Issues tab
-- 📖 Docs: Check Jekyll documentation
+```bash
+# Check for Jekyll issues
+bundle exec jekyll doctor
 
-## 📄 License
+# Clean and rebuild
+bundle exec jekyll clean
+bundle exec jekyll build
 
-This template is provided free for educational use by CyberSecurityRockstar students.
+# Update dependencies
+bundle update
+```
 
-## 🙏 Credits
+## 📄 File List for Updates
 
-**Built for:** [CyberSecurityRockstar](https://cybersecurityrockstar.com) students
-**Framework:** Jekyll static site generator
-**Hosting:** GitHub Pages
-**Icons:** Font Awesome
-**Fonts:** Google Fonts (Inter)
+If you're updating an existing site, replace/modify these files:
 
----
+### Required Updates:
 
-**Powered by [CyberSecurityRockstar](https://cybersecurityrockstar.com)** 🚀
+1. `_config.yml` - Enhanced configuration
+2. `index.html` - Dynamic homepage
+3. `_layouts/default.html` - Enhanced layout
+4. `_sass/_themes.scss` - Complete theme system
+5. `assets/js/main.js` - Theme switching functionality
+6. `404.html` - Fixed 404 page
 
-_Made with ❤️ for cybersecurity students worldwide_
+### New Files to Add:
 
-## 🚀 Quick Commands
+1. `_layouts/page.html` - Page layout
+2. `_layouts/post.html` - Post layout
+
+### Optional Updates:
+
+1. `_projects/*.md` - Update project files with proper front matter
+2. `assets/css/main.scss` - Ensure proper imports
+
+## 🎯 Best Practices
+
+### Performance
+
+- Optimize images (use WebP when possible)
+- Keep project descriptions concise
+- Use appropriate image sizes
+
+### SEO
+
+- Write descriptive page titles
+- Add meta descriptions
+- Use semantic HTML structure
+
+### Accessibility
+
+- Include alt text for images
+- Use proper heading hierarchy
+- Ensure sufficient color contrast
+
+### Content
+
+- Keep project descriptions focused on impact
+- Use clear, professional language
+- Include relevant technical details
+
+## 📊 Analytics & Tracking
+
+### Google Analytics Setup
+
+1. Create a Google Analytics account
+2. Get your tracking ID
+3. Add to `_config.yml`:
+
+```yaml
+google_analytics: "G-XXXXXXXXXX"
+```
+
+### Performance Monitoring
+
+Monitor your site's performance:
+
+- Page load speeds
+- Mobile usability
+- Search console data
+
+## 🔒 Security
+
+### Best Practices
+
+- Keep Jekyll and gems updated
+- Use HTTPS (enabled by default on GitHub Pages)
+- Validate user inputs if adding forms
+- Regular security audits
+
+## 🚀 Quick Commands Reference
 
 ```bash
 # Development
@@ -301,8 +410,26 @@ bundle exec jekyll serve              # Start dev server
 bundle exec jekyll serve --livereload # Auto-refresh browser
 bundle exec jekyll build              # Build for production
 
-# Troubleshooting
+# Maintenance
 bundle exec jekyll clean              # Clean build files
 bundle exec jekyll doctor             # Check for issues
 bundle update                         # Update dependencies
+
+# Theme Testing
+# Change theme_color in _config.yml and restart server
 ```
+
+## 📞 Support
+
+Need help? Check these resources:
+
+1. **Jekyll Documentation**: https://jekyllrb.com/docs/
+2. **GitHub Pages Docs**: https://docs.github.com/en/pages
+3. **Issue Tracker**: Use the GitHub Issues tab
+4. **Community**: Jekyll Discord/Forum
+
+---
+
+**🎉 Your portfolio is now ready! Happy coding!**
+
+Made with ❤️ for developers and data scientists worldwide.

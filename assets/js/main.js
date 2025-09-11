@@ -1,5 +1,8 @@
-// Simplified JavaScript - Remove theme switcher and complex functionality
+// Enhanced JavaScript with Theme System
 document.addEventListener("DOMContentLoaded", function () {
+  // Initialize theme system
+  initializeTheme();
+
   // Add smooth scroll behavior for anchor links
   document.addEventListener("click", function (e) {
     if (e.target.matches('a[href^="#"]')) {
@@ -28,7 +31,171 @@ document.addEventListener("DOMContentLoaded", function () {
       card.style.transform = "translateY(0)";
     }, 100 + index * 100);
   });
+
+  // Add theme switcher if it doesn't exist
+  addThemeSwitcher();
 });
 
-// Set clean theme as default
-document.body.classList.add("theme-clean");
+// Theme System Functions
+function initializeTheme() {
+  // Get theme from config or localStorage
+  const configTheme = document.body.dataset.configTheme || "clean";
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  const theme = savedTheme || configTheme;
+
+  applyTheme(theme);
+}
+
+function applyTheme(theme) {
+  // Remove all theme classes
+  const themeClasses = [
+    "theme-clean",
+    "theme-blue",
+    "theme-green",
+    "theme-red",
+    "theme-purple",
+    "theme-orange",
+    "theme-pink",
+    "theme-teal",
+    "theme-dark",
+  ];
+
+  document.body.classList.remove(...themeClasses);
+
+  // Add new theme class
+  document.body.classList.add(`theme-${theme}`);
+
+  // Set data attribute for CSS targeting
+  document.body.setAttribute("data-theme", theme);
+
+  // Save to localStorage
+  localStorage.setItem("portfolio-theme", theme);
+
+  // Update theme switcher if it exists
+  const switcher = document.getElementById("theme-switcher");
+  if (switcher) {
+    switcher.value = theme;
+  }
+}
+
+function addThemeSwitcher() {
+  // Check if theme switcher already exists
+  if (document.getElementById("theme-switcher")) return;
+
+  // Create theme switcher
+  const switcherContainer = document.createElement("div");
+  switcherContainer.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--bg-primary, #ffffff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+  `;
+
+  const label = document.createElement("label");
+  label.textContent = "Theme: ";
+  label.style.cssText = `
+    font-size: 0.8rem;
+    color: var(--text-primary, #1f2937);
+    margin-right: 8px;
+  `;
+
+  const switcher = document.createElement("select");
+  switcher.id = "theme-switcher";
+  switcher.style.cssText = `
+    padding: 4px 8px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 4px;
+    background: var(--bg-primary, #ffffff);
+    color: var(--text-primary, #1f2937);
+    font-size: 0.8rem;
+    cursor: pointer;
+  `;
+
+  // Add theme options
+  const themes = [
+    { value: "clean", label: "Clean" },
+    { value: "blue", label: "Blue" },
+    { value: "green", label: "Green" },
+    { value: "red", label: "Red" },
+    { value: "purple", label: "Purple" },
+    { value: "orange", label: "Orange" },
+    { value: "pink", label: "Pink" },
+    { value: "teal", label: "Teal" },
+    { value: "dark", label: "Dark" },
+  ];
+
+  themes.forEach((theme) => {
+    const option = document.createElement("option");
+    option.value = theme.value;
+    option.textContent = theme.label;
+    switcher.appendChild(option);
+  });
+
+  // Set current theme
+  const currentTheme =
+    localStorage.getItem("portfolio-theme") ||
+    document.body.dataset.configTheme ||
+    "clean";
+  switcher.value = currentTheme;
+
+  // Add event listener
+  switcher.addEventListener("change", function () {
+    applyTheme(this.value);
+  });
+
+  // Assemble switcher
+  switcherContainer.appendChild(label);
+  switcherContainer.appendChild(switcher);
+
+  // Add to page
+  document.body.appendChild(switcherContainer);
+
+  // Make it responsive
+  const mediaQuery = window.matchMedia("(max-width: 768px)");
+  function handleMobileView(e) {
+    if (e.matches) {
+      switcherContainer.style.cssText += `
+        top: 10px;
+        right: 10px;
+        padding: 8px;
+      `;
+      label.style.display = "none";
+    } else {
+      switcherContainer.style.cssText = switcherContainer.style.cssText.replace(
+        /top: 10px;|right: 10px;|padding: 8px;/g,
+        ""
+      );
+      label.style.display = "inline";
+    }
+  }
+
+  mediaQuery.addListener(handleMobileView);
+  handleMobileView(mediaQuery);
+}
+
+// Export theme functions for external use
+window.portfolioTheme = {
+  apply: applyTheme,
+  get current() {
+    return localStorage.getItem("portfolio-theme") || "clean";
+  },
+  available: [
+    "clean",
+    "blue",
+    "green",
+    "red",
+    "purple",
+    "orange",
+    "pink",
+    "teal",
+    "dark",
+  ],
+};
+
+// Set theme from Jekyll config
+document.body.dataset.configTheme = '{{ site.theme_color | default: "clean" }}';

@@ -1,17 +1,19 @@
+// Complete Theme System with 8 Color Options
+
 // Clean Theme (Default - Gray/White with Orange accents)
 .theme-clean,
+body[data-theme="clean"],
 body {
   --primary-color: #f97316;
   --primary-dark: #ea580c;
   --primary-light: #fb923c;
   --secondary-color: #f3f4f6;
   --accent-color: #fed7aa;
-  --gradient-start: #ffffff;
-  --gradient-end: #f9fafb;
+  --gradient-start: #f97316;
+  --gradient-end: #ea580c;
   --tag-bg: rgba(249, 115, 22, 0.1);
   --tag-text: #ea580c;
 
-  // Clean theme overrides
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
   --text-primary: #1f2937;
@@ -20,11 +22,228 @@ body {
   --border-color: #e5e7eb;
   --border-light: #f3f4f6;
 
-  // Shadows
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-// Remove all other themes - keep only the clean theme
-// This ensures students get a consistent, professional look
+// Blue Theme (Professional Blue)
+.theme-blue,
+body[data-theme="blue"] {
+  --primary-color: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  --secondary-color: #eff6ff;
+  --accent-color: #bfdbfe;
+  --gradient-start: #3b82f6;
+  --gradient-end: #1d4ed8;
+  --tag-bg: rgba(59, 130, 246, 0.1);
+  --tag-text: #2563eb;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-light: #f1f5f9;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Green Theme (Cybersecurity/Hacker Green)
+.theme-green,
+body[data-theme="green"] {
+  --primary-color: #10b981;
+  --primary-dark: #059669;
+  --primary-light: #34d399;
+  --secondary-color: #ecfdf5;
+  --accent-color: #a7f3d0;
+  --gradient-start: #10b981;
+  --gradient-end: #047857;
+  --tag-bg: rgba(16, 185, 129, 0.1);
+  --tag-text: #059669;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border-color: #d1d5db;
+  --border-light: #f3f4f6;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Red Theme (Security/Alert Red)
+.theme-red,
+body[data-theme="red"] {
+  --primary-color: #ef4444;
+  --primary-dark: #dc2626;
+  --primary-light: #f87171;
+  --secondary-color: #fef2f2;
+  --accent-color: #fecaca;
+  --gradient-start: #ef4444;
+  --gradient-end: #b91c1c;
+  --tag-bg: rgba(239, 68, 68, 0.1);
+  --tag-text: #dc2626;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --border-light: #f9fafb;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Purple Theme (Creative Purple)
+.theme-purple,
+body[data-theme="purple"] {
+  --primary-color: #8b5cf6;
+  --primary-dark: #7c3aed;
+  --primary-light: #a78bfa;
+  --secondary-color: #faf5ff;
+  --accent-color: #ddd6fe;
+  --gradient-start: #8b5cf6;
+  --gradient-end: #6d28d9;
+  --tag-bg: rgba(139, 92, 246, 0.1);
+  --tag-text: #7c3aed;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --border-light: #f9fafb;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Orange Theme (Vibrant Orange)
+.theme-orange,
+body[data-theme="orange"] {
+  --primary-color: #f97316;
+  --primary-dark: #ea580c;
+  --primary-light: #fb923c;
+  --secondary-color: #fff7ed;
+  --accent-color: #fed7aa;
+  --gradient-start: #f97316;
+  --gradient-end: #c2410c;
+  --tag-bg: rgba(249, 115, 22, 0.1);
+  --tag-text: #ea580c;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --border-light: #f9fafb;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Pink Theme (Modern Pink)
+.theme-pink,
+body[data-theme="pink"] {
+  --primary-color: #ec4899;
+  --primary-dark: #db2777;
+  --primary-light: #f472b6;
+  --secondary-color: #fdf2f8;
+  --accent-color: #fbcfe8;
+  --gradient-start: #ec4899;
+  --gradient-end: #be185d;
+  --tag-bg: rgba(236, 72, 153, 0.1);
+  --tag-text: #db2777;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --border-light: #f9fafb;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Teal Theme (Professional Teal)
+.theme-teal,
+body[data-theme="teal"] {
+  --primary-color: #14b8a6;
+  --primary-dark: #0f766e;
+  --primary-light: #5eead4;
+  --secondary-color: #f0fdfa;
+  --accent-color: #99f6e4;
+  --gradient-start: #14b8a6;
+  --gradient-end: #0d9488;
+  --tag-bg: rgba(20, 184, 166, 0.1);
+  --tag-text: #0f766e;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --border-light: #f9fafb;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Dark Theme (Professional Dark)
+.theme-dark,
+body[data-theme="dark"] {
+  --primary-color: #60a5fa;
+  --primary-dark: #3b82f6;
+  --primary-light: #93c5fd;
+  --secondary-color: #1f2937;
+  --accent-color: #374151;
+  --gradient-start: #60a5fa;
+  --gradient-end: #2563eb;
+  --tag-bg: rgba(96, 165, 250, 0.1);
+  --tag-text: #93c5fd;
+
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --border-color: #374151;
+  --border-light: #4b5563;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+// Theme application via body class or data attribute
+body.theme-blue,
+body.theme-green,
+body.theme-red,
+body.theme-purple,
+body.theme-orange,
+body.theme-pink,
+body.theme-teal,
+body.theme-dark,
+body.theme-clean {
+  transition: all 0.3s ease;
+}

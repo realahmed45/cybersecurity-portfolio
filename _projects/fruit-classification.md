@@ -5,7 +5,12 @@ description: "Built and optimized a CNN to classify different types of fruits wi
 image: "/assets/images/projects/fruit-classification.jpg"
 featured: true
 read_time: "48 minute read"
-tags: [Deep Learning, CNN, Data Science, Computer Vision, Python]
+tags:
+  - Deep Learning
+  - CNN
+  - Data Science
+  - Computer Vision
+  - Python
 github: "https://github.com/johnnyhopkins/fruit-classification"
 demo: "https://fruit-classifier-demo.herokuapp.com"
 date: 2024-02-20
@@ -173,17 +178,17 @@ def predict_fruit(image_path):
 
 ### 1. Class Imbalance
 
-**Problem**: Unequal distribution of fruit categories
+**Problem**: Unequal distribution of fruit categories  
 **Solution**: Implemented weighted loss functions and SMOTE oversampling
 
 ### 2. Similar Looking Fruits
 
-**Problem**: Difficulty distinguishing similar fruits (e.g., different apple varieties)
+**Problem**: Difficulty distinguishing similar fruits (e.g., different apple varieties)  
 **Solution**: Added attention mechanisms and increased model depth
 
 ### 3. Lighting Variations
 
-**Problem**: Images taken under different lighting conditions
+**Problem**: Images taken under different lighting conditions  
 **Solution**: Extensive data augmentation and color normalization
 
 ## Deployment Architecture

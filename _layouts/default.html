@@ -11,42 +11,114 @@
       content="{{ page.description | default: site.description }}"
     />
 
+    <!-- SEO Meta Tags -->
+    <meta
+      property="og:title"
+      content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}"
+    />
+    <meta
+      property="og:description"
+      content="{{ page.description | default: site.description }}"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}"
+    />
+    <meta
+      name="twitter:description"
+      content="{{ page.description | default: site.description }}"
+    />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+
+    <!-- Theme Initialization -->
+    <script>
+      // Initialize theme before page renders to prevent flash
+      (function () {
+        const configTheme = '{{ site.theme_color | default: "clean" }}';
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const theme = savedTheme || configTheme;
+
+        document.documentElement.className = `theme-${theme}`;
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
-  <body>
+  <body
+    class="theme-{{ site.theme_color | default: 'clean' }}"
+    data-config-theme="{{ site.theme_color | default: 'clean' }}"
+  >
     <main class="main-content">{{ content }}</main>
 
     <footer class="site-footer">
       <div class="container">
         <div class="footer-content">
           <div class="footer-icon">
-            <img src="../footer-logo.jpg" alt="Company Logo" />
+            {% if site.company_url %}
+            <a href="{{ site.company_url }}" target="_blank" rel="noopener">
+              <i class="fas fa-rocket"></i>
+            </a>
+            {% else %}
+            <i class="fas fa-rocket"></i>
+            {% endif %}
           </div>
           <p>
-            Powered by
-            <a href="{{ site.company_url }}" target="_blank"
-              >{{ site.company_name }}</a
+            Powered by {% if site.company_url %}
+            <a href="{{ site.company_url }}" target="_blank" rel="noopener"
+              >{{ site.company_name | default: "Jekyll" }}</a
             >
+            {% else %} {{ site.company_name | default: "Jekyll" }} {% endif %}
           </p>
         </div>
       </div>
     </footer>
 
+    <!-- Main JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+    <!-- Analytics (if configured) -->
+    {% if site.google_analytics %}
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "{{ site.google_analytics }}");
+    </script>
+    {% endif %}
+
     <style>
       .site-footer {
-        background: #31363d;
-        border-top: 1px solid #4a5158;
+        background: var(--bg-primary, #ffffff);
+        border-top: 1px solid var(--border-color, #e5e7eb);
         padding: 40px 0;
         text-align: center;
+        margin-top: auto;
       }
 
       .site-footer .container {
@@ -66,36 +138,57 @@
         margin-bottom: 5px;
       }
 
+      .footer-icon a,
       .footer-icon i {
         font-size: 2.2rem;
-        color: #f97316;
+        color: var(--primary-color, #f97316);
         transition: all 0.4s ease;
         filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.3));
+        text-decoration: none;
       }
 
+      .footer-icon a:hover,
       .footer-icon i:hover {
         transform: scale(1.1) rotate(5deg);
         filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6));
+        color: var(--primary-dark, #ea580c);
       }
 
       .site-footer p {
         margin: 0;
-        color: #a0a6ac;
+        color: var(--text-muted, #9ca3af);
         font-size: 0.9rem;
       }
 
       .site-footer a {
-        color: #f97316;
+        color: var(--primary-color, #f97316);
         text-decoration: none;
         transition: color 0.3s ease;
       }
 
       .site-footer a:hover {
-        color: #7dd3c0;
+        color: var(--primary-dark, #ea580c);
         text-decoration: underline;
       }
 
+      /* Ensure body takes full height */
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .main-content {
+        flex: 1;
+      }
+
       @media (max-width: 768px) {
+        .footer-icon a,
         .footer-icon i {
           font-size: 2rem;
         }
@@ -103,6 +196,26 @@
         .site-footer {
           padding: 30px 0;
         }
+
+        .site-footer p {
+          font-size: 0.8rem;
+        }
+      }
+
+      /* Theme transition for smooth switching */
+      body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Dark theme specific styles */
+      body[data-theme="dark"] {
+        background: var(--bg-primary, #111827);
+        color: var(--text-primary, #f9fafb);
+      }
+
+      body[data-theme="dark"] .site-footer {
+        background: var(--bg-secondary, #1f2937);
+        border-top-color: var(--border-color, #374151);
       }
     </style>
   </body>
