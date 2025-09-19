@@ -1,4 +1,4 @@
-// Enhanced JavaScript with Theme System
+// Enhanced JavaScript with FIXED Theme System
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize theme system
   initializeTheme();
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   addThemeSwitcher();
 });
 
-// Theme System Functions
+// FIXED Theme System Functions
 function initializeTheme() {
   // Get theme from config or localStorage
   const configTheme = document.body.dataset.configTheme || "clean";
@@ -47,7 +47,7 @@ function initializeTheme() {
 }
 
 function applyTheme(theme) {
-  // Remove all theme classes
+  // Remove all theme classes from both html and body
   const themeClasses = [
     "theme-clean",
     "theme-blue",
@@ -60,12 +60,16 @@ function applyTheme(theme) {
     "theme-dark",
   ];
 
+  // Apply to both HTML and body for stronger CSS targeting
+  document.documentElement.classList.remove(...themeClasses);
   document.body.classList.remove(...themeClasses);
 
-  // Add new theme class
+  // Add new theme class to both elements
+  document.documentElement.classList.add(`theme-${theme}`);
   document.body.classList.add(`theme-${theme}`);
 
-  // Set data attribute for CSS targeting
+  // Set data attributes for CSS targeting
+  document.documentElement.setAttribute("data-theme", theme);
   document.body.setAttribute("data-theme", theme);
 
   // Save to localStorage
@@ -76,6 +80,9 @@ function applyTheme(theme) {
   if (switcher) {
     switcher.value = theme;
   }
+
+  // Force CSS recalculation
+  document.body.offsetHeight;
 }
 
 function addThemeSwitcher() {
@@ -94,6 +101,7 @@ function addThemeSwitcher() {
     border-radius: 8px;
     padding: 10px;
     box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
   `;
 
   const label = document.createElement("label");
@@ -114,6 +122,7 @@ function addThemeSwitcher() {
     color: var(--text-primary, #1f2937);
     font-size: 0.8rem;
     cursor: pointer;
+    transition: all 0.3s ease;
   `;
 
   // Add theme options
@@ -143,9 +152,19 @@ function addThemeSwitcher() {
     "clean";
   switcher.value = currentTheme;
 
-  // Add event listener
+  // Add event listener with immediate effect
   switcher.addEventListener("change", function () {
     applyTheme(this.value);
+
+    // Update switcher container styles for new theme
+    setTimeout(() => {
+      switcherContainer.style.background = `var(--bg-primary, #ffffff)`;
+      switcherContainer.style.borderColor = `var(--border-color, #e5e7eb)`;
+      label.style.color = `var(--text-primary, #1f2937)`;
+      switcher.style.background = `var(--bg-primary, #ffffff)`;
+      switcher.style.borderColor = `var(--border-color, #e5e7eb)`;
+      switcher.style.color = `var(--text-primary, #1f2937)`;
+    }, 50);
   });
 
   // Assemble switcher
@@ -196,6 +215,3 @@ window.portfolioTheme = {
     "dark",
   ],
 };
-
-// Set theme from Jekyll config
-document.body.dataset.configTheme = '{{ site.theme_color | default: "clean" }}';

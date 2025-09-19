@@ -1,9 +1,9 @@
-// Complete Theme System with 8 Color Options
+// Complete Theme System with 8 Color Options - FIXED
 
 // Clean Theme (Default - Gray/White with Orange accents)
 .theme-clean,
-body[data-theme="clean"],
-body {
+body.theme-clean,
+body[data-theme="clean"] {
   --primary-color: #f97316;
   --primary-dark: #ea580c;
   --primary-light: #fb923c;
@@ -29,6 +29,7 @@ body {
 
 // Blue Theme (Professional Blue)
 .theme-blue,
+body.theme-blue,
 body[data-theme="blue"] {
   --primary-color: #3b82f6;
   --primary-dark: #2563eb;
@@ -55,6 +56,7 @@ body[data-theme="blue"] {
 
 // Green Theme (Cybersecurity/Hacker Green)
 .theme-green,
+body.theme-green,
 body[data-theme="green"] {
   --primary-color: #10b981;
   --primary-dark: #059669;
@@ -81,6 +83,7 @@ body[data-theme="green"] {
 
 // Red Theme (Security/Alert Red)
 .theme-red,
+body.theme-red,
 body[data-theme="red"] {
   --primary-color: #ef4444;
   --primary-dark: #dc2626;
@@ -107,6 +110,7 @@ body[data-theme="red"] {
 
 // Purple Theme (Creative Purple)
 .theme-purple,
+body.theme-purple,
 body[data-theme="purple"] {
   --primary-color: #8b5cf6;
   --primary-dark: #7c3aed;
@@ -133,6 +137,7 @@ body[data-theme="purple"] {
 
 // Orange Theme (Vibrant Orange)
 .theme-orange,
+body.theme-orange,
 body[data-theme="orange"] {
   --primary-color: #f97316;
   --primary-dark: #ea580c;
@@ -159,6 +164,7 @@ body[data-theme="orange"] {
 
 // Pink Theme (Modern Pink)
 .theme-pink,
+body.theme-pink,
 body[data-theme="pink"] {
   --primary-color: #ec4899;
   --primary-dark: #db2777;
@@ -185,6 +191,7 @@ body[data-theme="pink"] {
 
 // Teal Theme (Professional Teal)
 .theme-teal,
+body.theme-teal,
 body[data-theme="teal"] {
   --primary-color: #14b8a6;
   --primary-dark: #0f766e;
@@ -211,6 +218,7 @@ body[data-theme="teal"] {
 
 // Dark Theme (Professional Dark)
 .theme-dark,
+body.theme-dark,
 body[data-theme="dark"] {
   --primary-color: #60a5fa;
   --primary-dark: #3b82f6;
@@ -235,15 +243,20 @@ body[data-theme="dark"] {
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
-// Theme application via body class or data attribute
-body.theme-blue,
-body.theme-green,
-body.theme-red,
-body.theme-purple,
-body.theme-orange,
-body.theme-pink,
-body.theme-teal,
-body.theme-dark,
-body.theme-clean {
+// FIXED: Theme application with stronger selectors
+body {
+  transition: all 0.3s ease;
+}
+
+// Ensure theme variables are applied properly
+html.theme-clean,
+html.theme-blue,
+html.theme-green,
+html.theme-red,
+html.theme-purple,
+html.theme-orange,
+html.theme-pink,
+html.theme-teal,
+html.theme-dark {
   transition: all 0.3s ease;
 }

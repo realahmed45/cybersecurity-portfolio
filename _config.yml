@@ -18,9 +18,17 @@ resume_url: "/assets/resume.pdf"
 # Company branding
 company_name: "CyberSecurityRockstar"
 company_url: "https://cybersecurityrockstar.com"
+footer_logo: "/assets/images/footer-logo.jpg" # Add your company logo here
 
 # Theme color - Available options: blue, green, red, purple, orange, pink, teal, dark, clean
 theme_color: "clean"
+
+# NEW: Profile customization options
+profile_border_color: "#f97316" # Color for profile photo border (optional, uses theme color if not set)
+job_title_color: "#f97316" # Color for job title text (optional, uses theme color if not set)
+
+# NEW: Resume options
+resume_type: "pdf" # Options: "pdf" (download fixed PDF) or "generated" (auto-generate) or "both" (show both options)
 
 # Build settings
 markdown: kramdown

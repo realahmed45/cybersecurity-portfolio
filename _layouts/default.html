@@ -59,6 +59,7 @@
         const savedTheme = localStorage.getItem("portfolio-theme");
         const theme = savedTheme || configTheme;
 
+        // Apply to both html and body elements for stronger CSS targeting
         document.documentElement.className = `theme-${theme}`;
         document.documentElement.setAttribute("data-theme", theme);
       })();
@@ -68,30 +69,62 @@
     class="theme-{{ site.theme_color | default: 'clean' }}"
     data-config-theme="{{ site.theme_color | default: 'clean' }}"
   >
-    <main class="main-content">{{ content }}</main>
+    <!-- Main Content Wrapper -->
+    <div class="page-wrapper">
+      <main class="main-content">{{ content }}</main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-icon">
-            {% if site.company_url %}
-            <a href="{{ site.company_url }}" target="_blank" rel="noopener">
-              <i class="fas fa-rocket"></i>
-            </a>
-            {% else %}
-            <i class="fas fa-rocket"></i>
-            {% endif %}
+      <!-- Fixed Footer -->
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-content">
+            <div class="footer-icon">
+              {% if site.footer_logo %}
+              <img
+                src="{{ site.footer_logo | relative_url }}"
+                alt="{{ site.company_name | default: 'Company Logo' }}"
+                class="footer-logo-img"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+              />
+              {% endif %} {% if site.company_url %}
+              <a
+                href="{{ site.company_url }}"
+                target="_blank"
+                rel="noopener"
+                class="footer-icon-fallback"
+                {%
+                if
+                site.footer_logo
+                %}style="display: none;"
+                {%
+                endif
+                %}
+              >
+                <i class="fas fa-rocket"></i>
+              </a>
+              {% else %}
+              <i
+                class="fas fa-rocket footer-icon-fallback"
+                {%
+                if
+                site.footer_logo
+                %}style="display: none;"
+                {%
+                endif
+                %}
+              ></i>
+              {% endif %}
+            </div>
+            <p class="footer-text">
+              Powered by {% if site.company_url %}
+              <a href="{{ site.company_url }}" target="_blank" rel="noopener"
+                >{{ site.company_name | default: "Jekyll" }}</a
+              >
+              {% else %} {{ site.company_name | default: "Jekyll" }} {% endif %}
+            </p>
           </div>
-          <p>
-            Powered by {% if site.company_url %}
-            <a href="{{ site.company_url }}" target="_blank" rel="noopener"
-              >{{ site.company_name | default: "Jekyll" }}</a
-            >
-            {% else %} {{ site.company_name | default: "Jekyll" }} {% endif %}
-          </p>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
     <!-- Main JavaScript -->
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
@@ -113,15 +146,35 @@
     {% endif %}
 
     <style>
+      /* FIXED: Page layout and footer positioning */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .main-content {
+        flex: 1;
+      }
+
+      /* FIXED: Footer stays at bottom */
       .site-footer {
         background: var(--bg-primary, #ffffff);
         border-top: 1px solid var(--border-color, #e5e7eb);
-        padding: 40px 0;
+        padding: 30px 0;
         text-align: center;
         margin-top: auto;
+        flex-shrink: 0;
       }
 
-      .site-footer .container {
+      .footer-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
@@ -134,12 +187,28 @@
         gap: 15px;
       }
 
+      /* FIXED: Footer logo styling */
       .footer-icon {
         margin-bottom: 5px;
+        position: relative;
       }
 
-      .footer-icon a,
-      .footer-icon i {
+      .footer-logo-img {
+        height: 40px;
+        width: auto;
+        max-width: 120px;
+        border-radius: 8px;
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.3));
+      }
+
+      .footer-logo-img:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6));
+      }
+
+      .footer-icon-fallback,
+      .footer-icon-fallback i {
         font-size: 2.2rem;
         color: var(--primary-color, #f97316);
         transition: all 0.4s ease;
@@ -147,57 +216,45 @@
         text-decoration: none;
       }
 
-      .footer-icon a:hover,
-      .footer-icon i:hover {
+      .footer-icon-fallback:hover,
+      .footer-icon-fallback i:hover {
         transform: scale(1.1) rotate(5deg);
         filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6));
         color: var(--primary-dark, #ea580c);
       }
 
-      .site-footer p {
+      .footer-text {
         margin: 0;
         color: var(--text-muted, #9ca3af);
         font-size: 0.9rem;
       }
 
-      .site-footer a {
+      .footer-text a {
         color: var(--primary-color, #f97316);
         text-decoration: none;
         transition: color 0.3s ease;
       }
 
-      .site-footer a:hover {
+      .footer-text a:hover {
         color: var(--primary-dark, #ea580c);
         text-decoration: underline;
       }
 
-      /* Ensure body takes full height */
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      .main-content {
-        flex: 1;
-      }
-
       @media (max-width: 768px) {
-        .footer-icon a,
-        .footer-icon i {
+        .footer-logo-img {
+          height: 35px;
+        }
+
+        .footer-icon-fallback,
+        .footer-icon-fallback i {
           font-size: 2rem;
         }
 
         .site-footer {
-          padding: 30px 0;
+          padding: 25px 0;
         }
 
-        .site-footer p {
+        .footer-text {
           font-size: 0.8rem;
         }
       }
