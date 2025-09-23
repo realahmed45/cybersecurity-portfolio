@@ -3,6 +3,9 @@ source "https://rubygems.org"
 gem "jekyll", "~> 4.3.0"
 gem "minima", "~> 2.5"
 
+# Add this line to your Gemfile
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
 # Required for Ruby 3.4+ compatibility
 gem "csv"
 gem "logger"

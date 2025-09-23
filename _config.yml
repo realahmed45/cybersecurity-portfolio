@@ -13,7 +13,6 @@ url: ""
 # Social media
 github_username: "johnnyhopkins"
 linkedin_username: "johnny-hopkins"
-resume_url: "/assets/resume.pdf"
 
 # Company branding
 company_name: "CyberSecurityRockstar"
@@ -21,14 +20,28 @@ company_url: "https://cybersecurityrockstar.com"
 footer_logo: "/assets/images/footer-logo.jpg" # Add your company logo here
 
 # Theme color - Available options: blue, green, red, purple, orange, pink, teal, dark, clean
-theme_color: "clean"
+theme_color: "blue"
 
-# NEW: Profile customization options
-profile_border_color: "#f97316" # Color for profile photo border (optional, uses theme color if not set)
-job_title_color: "#f97316" # Color for job title text (optional, uses theme color if not set)
+# FLEXIBLE RESUME SYSTEM - Choose what works for you!
+resume_options:
+  # Option 1: PDF Download (Recommended for professional use)
+  pdf_enabled: true # Set to true to show PDF download option
+  pdf_url: "/assets/resume.pdf" # Path to your PDF file
+  pdf_label: "Download Resume (PDF)" # Label for PDF button
 
-# NEW: Resume options
-resume_type: "pdf" # Options: "pdf" (download fixed PDF) or "generated" (auto-generate) or "both" (show both options)
+  # Option 2: Auto-Generated Resume
+  generated_enabled: true # Set to true to show generated resume option
+  generated_label: "View Resume" # Label for generated resume button
+
+  # Display Options
+  show_both: true # true = show both buttons, false = show only the first available option
+  primary_option: "pdf" # "pdf" or "generated" - which one to show first/solo
+
+# Legacy support (still works but use resume_options above for more control)
+# resume_url: "/assets/resume.pdf"     # Old way - use resume_options instead
+
+# FIXED: Theme switcher control
+show_theme_switcher: false # Set to true to show the theme switcher widget
 
 # Build settings
 markdown: kramdown

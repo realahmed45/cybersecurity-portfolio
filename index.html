@@ -43,7 +43,6 @@ title: Home
     margin: 0;
     color: #ffffff;
     line-height: 1.1;
-    position: relative;
     text-align: right;
   }
 
@@ -78,8 +77,6 @@ title: Home
     margin-bottom: 40px;
     margin-top: 30px;
     text-align: left;
-    width: 100%;
-    max-width: none;
   }
 
   .hero-meta {
@@ -102,6 +99,7 @@ title: Home
     display: flex;
     gap: 60px;
     flex: 1;
+    flex-wrap: wrap;
   }
 
   .hero-link {
@@ -120,7 +118,78 @@ title: Home
     color: var(--primary-color, #f97316);
   }
 
-  /* Gray projects section */
+  /* Resume dropdown styling */
+  .resume-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .resume-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .resume-button:hover {
+    color: var(--primary-color, #f97316);
+  }
+
+  .resume-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .resume-dropdown:hover .resume-options,
+  .resume-dropdown.active .resume-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .resume-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #374151;
+  }
+
+  .resume-option:last-child {
+    border-bottom: none;
+  }
+
+  .resume-option:hover {
+    background: #374151;
+    color: var(--primary-color, #f97316);
+  }
+
+  .resume-option i {
+    font-size: 0.9rem;
+  }
+
+  /* Projects section */
   .projects {
     background: #31363d;
     padding: 60px 0;
@@ -444,8 +513,6 @@ title: Home
     }
     .hero-description {
       text-align: left;
-      width: 100%;
-      max-width: none;
       font-size: 0.9rem;
       margin-bottom: 25px;
       padding: 0 10px;
@@ -460,6 +527,16 @@ title: Home
       flex-wrap: wrap;
       justify-content: center;
     }
+
+    /* Mobile resume dropdown */
+    .resume-options {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+    }
+
     .projects {
       padding: 40px 0;
     }
@@ -480,13 +557,6 @@ title: Home
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
-    }
-    .project-tags {
-      gap: 6px;
-    }
-    .tag {
-      font-size: 0.7rem;
-      padding: 3px 8px;
     }
     .project-title {
       font-size: 1.1rem;
@@ -521,11 +591,6 @@ title: Home
       left: 50%;
       transform: translateX(-50%);
       right: auto;
-    }
-    .hero-description {
-      text-align: left;
-      width: 100%;
-      max-width: none;
     }
     .hero-meta {
       flex-direction: column;
@@ -565,12 +630,6 @@ title: Home
       right: auto;
       transform: none;
     }
-    .hero-description {
-      text-align: left;
-      width: 100%;
-      max-width: none;
-      font-size: 0.95rem;
-    }
     .hero-meta {
       gap: 50px;
       flex-direction: row;
@@ -598,11 +657,6 @@ title: Home
       padding: 0 40px;
       text-align: left;
     }
-    .hero-name::after {
-      left: 0;
-      transform: none;
-      width: 100%;
-    }
     .hero-title::after {
       left: 0;
       right: auto;
@@ -620,52 +674,6 @@ title: Home
       grid-template-columns: repeat(2, 1fr);
     }
   }
-
-  @media (max-width: 767px) and (orientation: landscape) {
-    .hero {
-      padding: 25px 0;
-    }
-    .hero-content {
-      gap: 25px;
-    }
-    .profile-photo {
-      width: 150px;
-      height: 150px;
-    }
-    .hero-name {
-      font-size: 1.8rem;
-    }
-    .hero-title {
-      font-size: 1.6rem;
-      margin: 15px 0 20px 0;
-    }
-    .hero-description {
-      font-size: 0.85rem;
-      margin-bottom: 20px;
-    }
-    .projects {
-      padding: 30px 0;
-    }
-  }
-
-  @media (hover: none) and (pointer: coarse) {
-    .project-card:hover {
-      transform: none;
-    }
-    .project-card:active {
-      transform: scale(0.98);
-    }
-    .hero-link {
-      min-height: 44px;
-      padding: 12px 16px;
-    }
-  }
-
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .profile-photo {
-      border-width: 4px;
-    }
-  }
 </style>
 
 <!-- Header Section -->
@@ -681,34 +689,30 @@ title: Home
     </div>
 
     <div class="hero-text">
-      <h1 class="hero-name">{{ site.author_name | default: "Your Name" }}</h1>
+      <h1 class="hero-name">
+        {{ site.author_name | default: "Johnny Hopkins" }}
+      </h1>
       <h2 class="hero-title">
-        {% if site.job_title %} {% assign title_parts = site.job_title | split:
-        ' ' %} {% if title_parts.size > 2 %} {% for part in title_parts limit:2
-        %}{{ part }}{% unless forloop.last %} {% endunless %}{% endfor %}
-        <span class="orange"
-          >{% for part in title_parts offset:2 %}{{ part }}{% unless
-          forloop.last %} {% endunless %}{% endfor %}</span
-        >
-        {% else %} {{ site.job_title }} {% endif %} {% else %} Your Job
-        <span class="orange">Title</span>
-        {% endif %}
+        Data Science <span class="orange">Portfolio</span>
       </h2>
 
       <p class="hero-description">
-        {{ site.description | default: "Your portfolio description goes here.
-        Update this in _config.yml to customize your introduction." }}
+        {{ site.description | default: "Hi I'm Johnny, and I'm a Data Scientist.
+        My portfolio focuses on interesting, value-adding projects I've recently
+        undertaken, with a strong emphasis on business impact. Please visit my
+        Github & LinkedIn pages (or download my Resume) by using the links
+        below!" }}
       </p>
 
       <div class="hero-meta">
         <div class="hero-location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>{{ site.location | default: "Your Location" }}</span>
+          <span>{{ site.location | default: "London, UK" }}</span>
         </div>
 
         <div class="hero-links">
           <a
-            href="https://github.com/{{ site.github_username | default: 'yourusername' }}"
+            href="https://github.com/{{ site.github_username | default: 'johnnyhopkins' }}"
             class="hero-link"
             target="_blank"
           >
@@ -717,7 +721,7 @@ title: Home
           </a>
 
           <a
-            href="https://linkedin.com/in/{{ site.linkedin_username | default: 'yourusername' }}"
+            href="https://linkedin.com/in/{{ site.linkedin_username | default: 'johnny-hopkins' }}"
             class="hero-link"
             target="_blank"
           >
@@ -725,6 +729,81 @@ title: Home
             <span>LinkedIn</span>
           </a>
 
+          <!-- FLEXIBLE RESUME SYSTEM -->
+          {% assign pdf_enabled = site.resume_options.pdf_enabled | default:
+          false %} {% assign generated_enabled =
+          site.resume_options.generated_enabled | default: true %} {% assign
+          show_both = site.resume_options.show_both | default: false %} {%
+          assign primary_option = site.resume_options.primary_option | default:
+          "generated" %}
+
+          <!-- Legacy support -->
+          {% if site.resume_url and pdf_enabled == false and generated_enabled
+          == true %} {% assign pdf_enabled = true %} {% assign pdf_url =
+          site.resume_url %} {% endif %} {% if show_both and pdf_enabled and
+          generated_enabled %}
+          <!-- Show both options in dropdown -->
+          <div class="resume-dropdown">
+            <div class="resume-button">
+              <i class="fas fa-file-pdf"></i>
+              <span>Resume</span>
+              <i
+                class="fas fa-chevron-down"
+                style="font-size: 0.8rem; margin-left: 4px"
+              ></i>
+            </div>
+            <div class="resume-options">
+              <a
+                href="{{ site.resume_options.pdf_url | default: '/assets/resume.pdf' }}"
+                class="resume-option"
+                target="_blank"
+                download
+              >
+                <i class="fas fa-download"></i>
+                <span
+                  >{{ site.resume_options.pdf_label | default: 'Download PDF'
+                  }}</span
+                >
+              </a>
+              <a
+                href="#"
+                class="resume-option"
+                onclick="generatePortfolioResume(); return false;"
+              >
+                <i class="fas fa-eye"></i>
+                <span
+                  >{{ site.resume_options.generated_label | default: 'View
+                  Online' }}</span
+                >
+              </a>
+            </div>
+          </div>
+          {% elsif pdf_enabled and primary_option == "pdf" %}
+          <!-- Show PDF option -->
+          <a
+            href="{{ site.resume_options.pdf_url | default: site.resume_url | default: '/assets/resume.pdf' }}"
+            class="hero-link"
+            target="_blank"
+            download
+          >
+            <i class="fas fa-download"></i>
+            <span>{{ site.resume_options.pdf_label | default: 'Resume' }}</span>
+          </a>
+          {% elsif generated_enabled %}
+          <!-- Show generated option -->
+          <a
+            href="#"
+            class="hero-link"
+            onclick="generatePortfolioResume(); return false;"
+          >
+            <i class="fas fa-file-pdf"></i>
+            <span
+              >{{ site.resume_options.generated_label | default: 'Resume'
+              }}</span
+            >
+          </a>
+          {% else %}
+          <!-- Fallback -->
           <a
             href="#"
             class="hero-link"
@@ -733,6 +812,7 @@ title: Home
             <i class="fas fa-file-pdf"></i>
             <span>Resume</span>
           </a>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -749,19 +829,26 @@ title: Home
       limit:4 %}
       <article
         class="project-card"
-        onclick="window.location.href='{{ project.url | relative_url }}'"
+        onclick="window.location.href='{{ project.url }}'"
       >
         <div class="project-image">
           {% if project.image %}
           <img
-            src="{{ project.image | relative_url }}"
+            src="{{ project.image }}"
             alt="{{ project.title }}"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
           />
-          {% endif %} {% if project.image %} {% assign viz_style = "display:
-          none" %} {% else %} {% assign viz_style = "display: flex" %} {% endif
-          %}
-          <div class="project-viz project-{{ forloop.index }}">
+          {% endif %}
+          <div
+            class="project-viz project-{{ forloop.index }}"
+            {%
+            if
+            project.image
+            %}style="display: none"
+            {%
+            endif
+            %}
+          >
             <div class="viz-center">
               <div class="laptop-icon">
                 <i
@@ -827,7 +914,7 @@ title: Home
           </div>
 
           <h3 class="project-title">
-            <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+            <a href="{{ project.url }}">{{ project.title }}</a>
           </h3>
 
           <p class="project-description">{{ project.description }}</p>
@@ -837,11 +924,11 @@ title: Home
       <!-- Fallback static projects -->
       <article
         class="project-card"
-        onclick="window.location.href='{{ '/projects/image-search-engine/' | relative_url }}'"
+        onclick="window.location.href='/projects/image-search-engine/'"
       >
         <div class="project-image">
           <img
-            src="{{ '/assets/images/projects/image-search-engine.jpg' | relative_url }}"
+            src="/assets/images/projects/image-search-engine.jpg"
             alt="Creating An Image Search Engine Using Deep Learning"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
           />
@@ -888,7 +975,7 @@ title: Home
             </div>
           </div>
           <h3 class="project-title">
-            <a href="{{ '/projects/image-search-engine/' | relative_url }}"
+            <a href="/projects/image-search-engine/"
               >Creating An Image Search Engine Using Deep Learning</a
             >
           </h3>
@@ -901,11 +988,11 @@ title: Home
 
       <article
         class="project-card"
-        onclick="window.location.href='{{ '/projects/fruit-classification/' | relative_url }}'"
+        onclick="window.location.href='/projects/fruit-classification/'"
       >
         <div class="project-image">
           <img
-            src="{{ '/assets/images/projects/fruit-classification.jpg' | relative_url }}"
+            src="/assets/images/projects/fruit-classification.jpg"
             alt="Fruit Classification Using A Convolutional Neural Network"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
           />
@@ -944,7 +1031,7 @@ title: Home
             </div>
           </div>
           <h3 class="project-title">
-            <a href="{{ '/projects/fruit-classification/' | relative_url }}"
+            <a href="/projects/fruit-classification/"
               >Fruit Classification Using A Convolutional Neural Network</a
             >
           </h3>
@@ -961,182 +1048,101 @@ title: Home
 
 <script>
   function generatePortfolioResume() {
-    var portfolioData = {
-      name: document.querySelector(".hero-name")
-        ? document.querySelector(".hero-name").textContent.trim()
-        : "Your Name",
-      title: document.querySelector(".hero-title")
-        ? document.querySelector(".hero-title").textContent.trim()
-        : "Your Job Title",
-      description: document.querySelector(".hero-description")
-        ? document.querySelector(".hero-description").textContent.trim()
-        : "Your description here",
-      location: document.querySelector(".hero-location span")
-        ? document.querySelector(".hero-location span").textContent.trim()
-        : "Your Location",
-      github: document.querySelector('.hero-link[href*="github"]')
-        ? document.querySelector('.hero-link[href*="github"]').href
-        : "https://github.com/yourusername",
-      linkedin: document.querySelector('.hero-link[href*="linkedin"]')
-        ? document.querySelector('.hero-link[href*="linkedin"]').href
-        : "https://linkedin.com/in/yourusername",
-      projects: [],
+    const portfolioData = {
+      name:
+        document.querySelector(".hero-name")?.textContent.trim() ||
+        "Johnny Hopkins",
+      title: "Data Science Portfolio",
+      description:
+        document.querySelector(".hero-description")?.textContent.trim() ||
+        "Data Scientist portfolio",
+      location:
+        document.querySelector(".hero-location span")?.textContent.trim() ||
+        "London, UK",
+      github:
+        document.querySelector('.hero-link[href*="github"]')?.href ||
+        "https://github.com/johnnyhopkins",
+      linkedin:
+        document.querySelector('.hero-link[href*="linkedin"]')?.href ||
+        "https://linkedin.com/in/johnny-hopkins",
     };
 
-    var projectCards = document.querySelectorAll(".project-card");
-    for (var i = 0; i < projectCards.length && i < 10; i++) {
-      var card = projectCards[i];
-      var titleElement =
-        card.querySelector(".project-title a") ||
-        card.querySelector(".project-title");
-      var descElement = card.querySelector(".project-description");
-      var tagElements = card.querySelectorAll(".tag");
+    const resumeHTML = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>${portfolioData.name} - Resume</title>
+    <style>
+        @page { margin: 0.75in; size: A4; }
+        body { font-family: 'Arial', sans-serif; font-size: 11pt; line-height: 1.4; color: #333; margin: 0; padding: 0; }
+        .header { text-align: center; border-bottom: 2pt solid #f97316; padding-bottom: 15pt; margin-bottom: 20pt; }
+        .name { font-size: 22pt; font-weight: bold; margin-bottom: 3pt; color: #333; }
+        .title { font-size: 14pt; color: #f97316; margin-bottom: 8pt; font-weight: 500; }
+        .contact { font-size: 9pt; color: #666; line-height: 1.3; }
+        .section { margin-bottom: 18pt; page-break-inside: avoid; }
+        .section h3 { color: #f97316; border-bottom: 1pt solid #f97316; padding-bottom: 3pt; margin-bottom: 10pt; font-size: 14pt; margin-top: 0; }
+        .summary { font-size: 10pt; line-height: 1.4; color: #555; }
+        .skills { font-size: 10pt; line-height: 1.5; color: #555; }
+        .skills strong { color: #333; }
+        a { color: #f97316; text-decoration: none; }
+        @media print { body { -webkit-print-color-adjust: exact; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="name">${portfolioData.name}</div>
+        <div class="title">${portfolioData.title}</div>
+        <div class="contact">
+            ${portfolioData.location}<br>
+            <a href="${portfolioData.github}">${portfolioData.github}</a><br>
+            <a href="${portfolioData.linkedin}">${portfolioData.linkedin}</a>
+        </div>
+    </div>
+    <div class="section">
+        <h3>Professional Summary</h3>
+        <div class="summary">${portfolioData.description}</div>
+    </div>
+    <div class="section">
+        <h3>Technical Skills</h3>
+        <div class="skills">
+            <strong>Programming Languages:</strong> Python, R, SQL, JavaScript<br>
+            <strong>Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, Keras<br>
+            <strong>Data Science:</strong> Pandas, NumPy, Matplotlib, Seaborn, Plotly<br>
+            <strong>Web Development:</strong> HTML, CSS, React, Node.js, Flask, Django<br>
+            <strong>Tools & Technologies:</strong> Git, Docker, AWS, Jupyter, VS Code, Linux<br>
+            <strong>Databases:</strong> PostgreSQL, MySQL, MongoDB, Redis
+        </div>
+    </div>
+</body>
+</html>`;
 
-      var tags = [];
-      for (var j = 0; j < tagElements.length; j++) {
-        tags.push(tagElements[j].textContent.trim());
-      }
-
-      if (titleElement && descElement) {
-        portfolioData.projects.push({
-          title: titleElement.textContent.trim(),
-          description: descElement.textContent.trim(),
-          tags: tags.join(", "),
-        });
-      }
-    }
-
-    var resumeHTML =
-      "<!DOCTYPE html>" +
-      "<html>" +
-      "<head>" +
-      '<meta charset="UTF-8">' +
-      "<title>" +
-      escapeHtml(portfolioData.name) +
-      " - Resume</title>" +
-      "<style>" +
-      "body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333; }" +
-      ".header { text-align: center; border-bottom: 3px solid #f97316; padding-bottom: 20px; margin-bottom: 30px; }" +
-      ".name { font-size: 28px; font-weight: bold; margin-bottom: 5px; color: #333; }" +
-      ".title { font-size: 18px; color: #f97316; margin-bottom: 10px; font-weight: 500; }" +
-      ".contact { font-size: 12px; color: #666; line-height: 1.4; }" +
-      ".section { margin-bottom: 25px; }" +
-      ".section h3 { color: #f97316; border-bottom: 1px solid #f97316; padding-bottom: 5px; margin-bottom: 15px; font-size: 18px; }" +
-      ".project { margin-bottom: 20px; padding: 15px; border-left: 3px solid #f97316; background: #f9f9f9; border-radius: 0 5px 5px 0; }" +
-      ".project-title { font-weight: bold; margin-bottom: 5px; color: #333; font-size: 16px; }" +
-      ".project-desc { margin-bottom: 8px; font-size: 14px; color: #555; line-height: 1.5; }" +
-      ".project-tags { font-size: 12px; color: #f97316; font-style: italic; }" +
-      ".summary { font-size: 14px; line-height: 1.6; color: #555; }" +
-      ".skills { font-size: 14px; line-height: 1.8; color: #555; }" +
-      ".skills strong { color: #333; }" +
-      "@media print { body { margin: 0; padding: 20px; font-size: 12px; } .header { page-break-after: avoid; } }" +
-      "</style>" +
-      "</head>" +
-      "<body>" +
-      '<div class="header">' +
-      '<div class="name">' +
-      escapeHtml(portfolioData.name) +
-      "</div>" +
-      '<div class="title">' +
-      escapeHtml(portfolioData.title) +
-      "</div>" +
-      '<div class="contact">' +
-      escapeHtml(portfolioData.location) +
-      "<br>" +
-      '<a href="' +
-      escapeHtml(portfolioData.github) +
-      '">' +
-      escapeHtml(portfolioData.github) +
-      "</a><br>" +
-      '<a href="' +
-      escapeHtml(portfolioData.linkedin) +
-      '">' +
-      escapeHtml(portfolioData.linkedin) +
-      "</a>" +
-      "</div>" +
-      "</div>" +
-      '<div class="section">' +
-      "<h3>Professional Summary</h3>" +
-      '<div class="summary">' +
-      escapeHtml(portfolioData.description) +
-      "</div>" +
-      "</div>";
-
-    if (portfolioData.projects.length > 0) {
-      resumeHTML += '<div class="section"><h3>Featured Projects</h3>';
-
-      for (var k = 0; k < portfolioData.projects.length; k++) {
-        var project = portfolioData.projects[k];
-        resumeHTML +=
-          '<div class="project">' +
-          '<div class="project-title">' +
-          escapeHtml(project.title) +
-          "</div>" +
-          '<div class="project-desc">' +
-          escapeHtml(project.description) +
-          "</div>" +
-          '<div class="project-tags">Technologies: ' +
-          escapeHtml(project.tags) +
-          "</div>" +
-          "</div>";
-      }
-
-      resumeHTML += "</div>";
-    }
-
-    resumeHTML +=
-      '<div class="section">' +
-      "<h3>Technical Skills</h3>" +
-      '<div class="skills">' +
-      "<strong>Programming Languages:</strong> Python, R, SQL, JavaScript<br>" +
-      "<strong>Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, Keras<br>" +
-      "<strong>Data Science:</strong> Pandas, NumPy, Matplotlib, Seaborn, Plotly<br>" +
-      "<strong>Web Development:</strong> HTML, CSS, React, Node.js, Flask, Django<br>" +
-      "<strong>Tools & Technologies:</strong> Git, Docker, AWS, Jupyter, VS Code, Linux<br>" +
-      "<strong>Databases:</strong> PostgreSQL, MySQL, MongoDB, Redis" +
-      "</div>" +
-      "</div>" +
-      "</body>" +
-      "</html>";
-
-    try {
-      var blob = new Blob([resumeHTML], { type: "text/html" });
-      var url = URL.createObjectURL(blob);
-      var link = document.createElement("a");
-      link.href = url;
-      link.download = sanitizeFilename(portfolioData.name) + "_Resume.html";
-
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      setTimeout(function () {
-        URL.revokeObjectURL(url);
-      }, 100);
-
-      var printWindow = window.open("", "_blank");
-      if (printWindow) {
-        printWindow.document.write(resumeHTML);
-        printWindow.document.close();
-        setTimeout(function () {
-          printWindow.print();
-        }, 500);
-      }
-    } catch (error) {
-      console.error("Error generating resume:", error);
-      alert("Error generating resume. Please try again.");
+    const printWindow = window.open("", "_blank", "width=800,height=600");
+    if (printWindow) {
+      printWindow.document.write(resumeHTML);
+      printWindow.document.close();
+      setTimeout(() => {
+        printWindow.focus();
+        printWindow.print();
+      }, 1000);
+    } else {
+      alert("Please allow popups to generate your resume PDF");
     }
   }
 
-  function escapeHtml(text) {
-    if (!text) return "";
-    var div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-  }
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (e) {
+    const dropdown = document.querySelector(".resume-dropdown");
+    if (dropdown && !dropdown.contains(e.target)) {
+      dropdown.classList.remove("active");
+    }
+  });
 
-  function sanitizeFilename(name) {
-    if (!name) return "Resume";
-    return name.replace(/[^a-zA-Z0-9\-_]/g, "_").replace(/_{2,}/g, "_");
-  }
+  // Toggle dropdown on click
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".resume-button")) {
+      e.preventDefault();
+      const dropdown = e.target.closest(".resume-dropdown");
+      dropdown.classList.toggle("active");
+    }
+  });
 </script>
